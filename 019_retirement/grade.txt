@@ -1,0 +1,21 @@
+Grading at 09/03/2019:00:21:13.101726
+For commit ID 236a9c3ea9697f7cc4621c286797ee760b4713aa
+Grading at Mon Sep  2 20:21:12 EDT 2019
+Attempting to compile retirement.c
+Checking for struct _retire_info
+not found
+Checking for field int months
+not found
+Checking for field double contribution
+not found
+Checking for field double rate_of_return
+not found
+Checking for typedef of struct _retire_info to retire_info
+not found
+Checking for void retirement (int startAge, double initial,  retire_info working,  retire_info retired)
+not found
+Checking for int main(void)
+Found on line 59, column 1 
+Your code does not have the right struct, fields, and/or functions.
+
+Overall Grade: F

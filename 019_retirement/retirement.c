@@ -44,13 +44,13 @@ void retirement(int startAge, double initial, retire_info working, retire_info r
   for (int i = 0; i < wm; i++) {
     year = cal_year(s + i);
     month = cal_month(s + i);
-    printf("Age %3d month %2d, you have $%.2f \n", year, month, balance);
+    printf("Age %3d month %2d you have $%.2f \n", year, month, balance);
     balance = balance_work(balance, wr, wc);
   }
   for (int j = 0; j < rm; j++) {
     year = cal_year(s + wm + j);
     month = cal_month(s + wm + j);
-    printf("Age %3d month %2d, you have $%.2f \n", year, month, balance);
+    printf("Age %3d month %2d you have $%.2f \n", year, month, balance);
     balance = balance_retire(balance, rr, rc);
   }
   return;

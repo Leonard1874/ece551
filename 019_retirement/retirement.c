@@ -56,7 +56,7 @@ void retirement(int startAge, double initial, retire_info working, retire_info r
   return;
 }
 
-int main() {
+int main(void) {
   retire_info working;
   working.months = 489;
   working.contribution = 1000.0;

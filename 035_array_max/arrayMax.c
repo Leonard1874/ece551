@@ -11,6 +11,7 @@ int * arrayMax(int * array, int n) {
     int max = array[0];
     for (i = 1; i < n; i++) {
       if (array[i] > max) {
+        max = array[i];
         maxel = &array[i];
       }
     }

@@ -8,11 +8,11 @@ size_t maxSeq(int * array, size_t n) {
   if (n == 1) {
     return 1;
   }
-  size_t l;
-  size_t max_l;
+  size_t l = 0;
+  size_t max_l = 0;
   size_t left = 0;
   size_t right = 0;
-  l = left - right;
+  l = right - left;
   while (right + 1 <= n - 1) {
     if (array[right + 1] > array[right]) {
       right += 1;

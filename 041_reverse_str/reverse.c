@@ -4,13 +4,16 @@
 
 void reverse(char * str) {
   //WRITE ME!
+  if (str == NULL) {
+    return;
+  }
   int l = 0;
   l = strlen(str);
   if (l == 0 || l == 1) {
     return;
   }
   else {
-    char temp = 'x';
+    char temp = ' ';
     int i = 0;
     int j = l - 1;
     while (i <= j) {

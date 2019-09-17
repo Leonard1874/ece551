@@ -9,7 +9,9 @@
 #include <stdio.h>
 #include <stdlib.h>
 
+//genrate seqence3
 int seq3(int x, int y) {
+  //pattern : -3x+2y+xy
   int res = -3 * x + 2 * y + x * y;
   return res;
 }
@@ -26,26 +28,30 @@ int countEvenInSeq3Range(int xLow, int xHi, int yLow, int yHi) {
   return num_even;
 }
 
+//testing
 int main(void) {
+  // test seq3 with numbers in x [-10,10], y [-10,10]
   int res = 0;
   for (int y = -10; y <= 10; y++) {
     for (int x = -10; x <= 10; x++) {
       res = seq3(x, y);
-      printf("seq3(%d,%d) = %d\n", x, y, res);
+      printf("seq3(%d, %d) = %d\n", x, y, res);
       res = 0;
     }
   }
 
-  printf("seq3(%d,%d) = %d\n", -1000, 1000, seq3(-1000, 1000));
-  printf("seq3(%d,%d) = %d\n", -2000, -1000, seq3(-2000, -1000));
-  printf("seq3(%d,%d) = %d\n", 2000, 2000, seq3(2000, 2000));
-  printf("seq3(%d,%d) = %d\n", 2000, -2000, seq3(2000, -2000));
+  //test seq3 with large numbers
+  printf("seq3(%d, %d) = %d\n", -1000, 1000, seq3(-1000, 1000));
+  printf("seq3(%d, %d) = %d\n", -2000, -1000, seq3(-2000, -1000));
+  printf("seq3(%d, %d) = %d\n", 2000, 2000, seq3(2000, 2000));
+  printf("seq3(%d, %d) = %d\n", 2000, -2000, seq3(2000, -2000));
 
+  //test counteveninseq3range with numbers in [-10,10]
   for (int yL = 0; yL <= 5; yL++) {
     for (int yH = -5; yH <= 2; yH++) {
       for (int xL = 0; xL <= 5; xL++) {
         for (int xH = -2; xH <= 5; xH++) {
-          printf("countEvenInSeq3Range(%d,%d,%d,%d) = %d\n",
+          printf("countEvenInSeq3Range(%d, %d, %d, %d) = %d\n",
                  xL,
                  xH,
                  yL,
@@ -56,19 +62,20 @@ int main(void) {
     }
   }
 
-  printf("countEvenInSeq3Range(%d,%d,%d,%d) = %d\n",
+  //test counteveninseq3range with large numbers
+  printf("countEvenInSeq3Range(%d, %d, %d, %d) = %d\n",
          1000,
          2000,
          5,
          10,
          countEvenInSeq3Range(1000, 2000, 5, 10));
-  printf("countEvenInSeq3Range(%d,%d,%d,%d) = %d\n",
+  printf("countEvenInSeq3Range(%d, %d, %d, %d) = %d\n",
          5,
          10,
          1000,
          2500,
          countEvenInSeq3Range(5, 10, 1000, 2500));
-  printf("countEvenInSeq3Range(%d,%d,%d,%d) = %d\n",
+  printf("countEvenInSeq3Range(%d, %d, %d, %d) = %d\n",
          1000,
          2500,
          1000,

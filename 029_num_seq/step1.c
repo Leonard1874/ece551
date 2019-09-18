@@ -51,13 +51,23 @@ int main(void) {
   printf("seq1(%d) = %d\n", 100000, seq1(100000));
   printf("seq1(%d) = %d\n", -100000, seq1(-100000));
 
-  //test printSeq1range with low [-10,10], high [-10,10]
-  for (int k = -10; k <= 10; k++) {
-    for (int j = -10; j <= 10; j++) {
+  //test printSeq1range with low [-5,5], high [-5,5]
+  for (int k = -5; k <= 5; k++) {
+    for (int j = -5; j <= 5; j++) {
       printf("printSeq1range(%d,%d)\n", k, j);
       printSeq1Range(k, j);
     }
   }
+
+  //provided test cases
+  printf("printSeq1range(%d,%d)\n", -2, 6);
+  printSeq1Range(-2, 6);
+  printf("printSeq1range(%d,%d)\n", 0, 4);
+  printSeq1Range(0, 4);
+  printf("printSeq1range(%d,%d)\n", 7, 3);
+  printSeq1Range(7, 3);
+  printf("printSeq1range(%d,%d)\n", 0, 0);
+  printSeq1Range(0, 0);
 
   //test printSeq1range with large numbers
   printf("printSeq1range(%d,%d)\n", -1000, -200);

@@ -46,11 +46,11 @@ int main(void) {
   printf("seq3(%d, %d) = %d\n", 2000, 2000, seq3(2000, 2000));
   printf("seq3(%d, %d) = %d\n", 2000, -2000, seq3(2000, -2000));
 
-  //test counteveninseq3range with numbers in [-10,10]
-  for (int yL = 0; yL <= 5; yL++) {
-    for (int yH = -5; yH <= 2; yH++) {
-      for (int xL = 0; xL <= 5; xL++) {
-        for (int xH = -2; xH <= 5; xH++) {
+  //test counteveninseq3range with numbers in [-5,5]
+  for (int yL = -5; yL <= 5; yL++) {
+    for (int yH = -5; yH <= 5; yH++) {
+      for (int xL = -5; xL <= 5; xL++) {
+        for (int xH = -5; xH <= 5; xH++) {
           printf("countEvenInSeq3Range(%d, %d, %d, %d) = %d\n",
                  xL,
                  xH,
@@ -61,6 +61,14 @@ int main(void) {
       }
     }
   }
+
+  //provided test case
+  printf("countEvenInSeq3Range(%d, %d, %d, %d) = %d\n",
+         0,
+         2,
+         0,
+         3,
+         countEvenInSeq3Range(0, 2, 0, 3));
 
   //test counteveninseq3range with large numbers
   printf("countEvenInSeq3Range(%d, %d, %d, %d) = %d\n",

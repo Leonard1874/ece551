@@ -34,8 +34,8 @@ int sumSeq2(int low, int high) {
 int main(void) {
   int x = 0;  //save the return value of seq2 in x for printing
 
-  //test seq2 with numbers in [-10,10]
-  for (int i = -10; i <= 10; i++) {
+  //test seq2 with numbers in [-20,20]
+  for (int i = -20; i <= 20; i++) {
     x = seq2(i);
     printf("seq2(%d) = %d\n", i, x);
     x = 0;
@@ -54,7 +54,13 @@ int main(void) {
     }
   }
 
+  //provided test cases
+  printf("sumSeq2(%d,%d) = %d\n", 0, 2, sumSeq2(0, 2));
+  printf("sumSeq2(%d,%d) = %d\n", 3, 6, sumSeq2(3, 6));
+  printf("sumSeq2(%d,%d) = %d\n", 9, 7, sumSeq2(9, 7));
+
   //test sumSeq2 with large numbers
+  printf("sumSeq2(%d,%d) = %d\n", 100, 100, sumSeq2(100, 100));
   printf("sumSeq2(%d, %d) = %d\n", 0, 1000, sumSeq2(0, 1000));
   printf("sumSeq2(%d, %d) = %d\n", -1000, 1000, sumSeq2(-1000, 1000));
   printf("sumSeq2(%d, %d) = %d\n", -1000, 0, sumSeq2(-1000, 0));

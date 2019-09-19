@@ -27,7 +27,13 @@ int countmax(FILE * f) {
 
 int countkey(int m) {
   int res = m - 'e';
-  return res;
+  if (res >= 0) {
+    return res;
+  }
+  else {
+    res += 26;
+    return res;
+  }
 }
 
 int main(int argc, char ** argv) {

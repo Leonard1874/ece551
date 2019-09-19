@@ -1,18 +1,18 @@
-Grading at 09/19/2019:02:54:38.812118
-For commit ID c9c39f0b83447feaa06cbb016b0b9a452a7adace
-Grading at Wed Sep 18 22:54:38 EDT 2019
+Grading at 09/19/2019:03:00:27.969072
+For commit ID c9e7d6ffc412922125e544ddcf29ef5c2e9e695f
+Grading at Wed Sep 18 23:00:24 EDT 2019
 Attempting to compile breaker.c 
 gcc -std=gnu99 -pedantic -Wall -o3   -c -o breaker.o breaker.c
-gcc -o myProgram breaker.o
-valgrind reported memory errors
+gcc -o breaker breaker.o
+testcase1 passed
 #################################################
 testcase2:
-valgrind reported memory errors or your program ran too long
+testcase2 passed
 #################################################
 testcase3:
-valgrind reported memory errors or your program ran too long
+testcase3 failed
 #################################################
 testcase4:
-valgrind reported memory errors or your program ran too long
+testcase4 passed
 
-Overall Grade: F
+Overall Grade: C

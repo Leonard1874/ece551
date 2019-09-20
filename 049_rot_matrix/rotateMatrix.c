@@ -73,6 +73,13 @@ int main(int argc, char ** argv) {
     return EXIT_FAILURE;
   }
 
+  if (fgetc(f) == EOF) {
+    fprintf(stderr, "the file is empty!");
+    return EXIT_FAILURE;
+  }
+
+  fseek(f, 0, SEEK_SET);
+
   size_t lsize = 12;
   size_t csize = 10;
   char lines[csize][lsize];

@@ -2,7 +2,7 @@
 #include <stdlib.h>
 #include <string.h>
 
-int readlines(int ** l, size_t size, size_t lsize, FILE * f) {
+int readlines(char ** l, size_t size, size_t lsize, FILE * f) {
   size_t i = 0;
   while (i < size) {
     /*
@@ -20,11 +20,11 @@ int readlines(int ** l, size_t size, size_t lsize, FILE * f) {
       }
       i++;
     }*/
-    /*
+
     fgets(l[i], lsize, f);
     if (strchr(l[i], '\n') == NULL) {
-      int t = 0;
-      if ()
+      // int t = 0;
+
       fprintf(stderr, "line is too long!");
       return 0;
     }
@@ -36,20 +36,18 @@ int readlines(int ** l, size_t size, size_t lsize, FILE * f) {
     }
     i++;
   }
-    */
 
-    int c = 1;
+  int c = 1;
 
-    if ((c = fgetc(f)) != EOF) {
-      fprintf(stderr, "too many lines!");
-      return 0;
-    }
-
-    return 1;
+  if ((c = fgetc(f)) != EOF) {
+    fprintf(stderr, "too many lines!");
+    return 0;
   }
+
+  return 1;
 }
 
-void printlines(int ** l, size_t lsize, size_t csize) {
+void printlines(char ** l, size_t lsize, size_t csize) {
   for (size_t i = 0; i < csize; i++) {
     for (size_t j = 0; j < lsize - 2; j++) {
       fprintf(stdout, "%c", l[csize - 1 - j][i]);
@@ -76,8 +74,8 @@ int main(int argc, char ** argv) {
 
   size_t lsize = 12;
   size_t csize = 10;
-  int lines[csize][lsize];
-  int * plines[] = {
+  char lines[csize][lsize];
+  char * plines[] = {
       lines[0],
       lines[1],
       lines[2],

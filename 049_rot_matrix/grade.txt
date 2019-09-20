@@ -1,23 +1,12 @@
-Grading at 09/20/2019:20:49:14.083327
-For commit ID 74d6940d1fe0cfdc2c96e70ef0557c03ef8986d2
-Grading at Fri Sep 20 16:49:09 EDT 2019
+Grading at 09/20/2019:21:09:54.979204
+For commit ID 906198a593ee4581974b3b6489db1725faa776d6
+Grading at Fri Sep 20 17:09:54 EDT 2019
 Attempting to compile rotateMatrix.c
-testcase1 passed
-#################################################
-testcase2:
-testcase2 passed
-#################################################
-testcase3:
-valgrind reported memory errors
-#################################################
-testcase4:
-valgrind reported memory errors
-#################################################
-testcase5:
-testcase5 passed
-#################################################
-testcase6:
-Your file matched the expected output
-testcase6 passed
+rotateMatrix.c: In function ‘readlines’:
+rotateMatrix.c:50:1: error: control reaches end of non-void function [-Werror=return-type]
+ }
+ ^
+cc1: all warnings being treated as errors
+The code did not compile!
 
-Overall Grade: C
+Overall Grade: F

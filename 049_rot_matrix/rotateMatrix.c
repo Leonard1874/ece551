@@ -21,8 +21,6 @@ int readlines(char ** l, size_t size, size_t lsize, FILE * f) {
       i++;
     }*/
     fgets(l[i], lsize, f);
-    // fprintf(stdout, "%s", l[i]);
-    // fprintf(stdout, "i = %zu", i);
     if (strchr(l[i], '\n') == NULL) {
       fprintf(stderr, "line is too long!");
       return 0;
@@ -35,6 +33,14 @@ int readlines(char ** l, size_t size, size_t lsize, FILE * f) {
     }
     i++;
   }
+
+  char c = '1';
+
+  if ((c = fgetc(f)) != EOF) {
+    fprintf(stderr, "too many lines!");
+    return 0;
+  }
+
   return 1;
 }
 

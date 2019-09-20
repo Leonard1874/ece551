@@ -23,8 +23,14 @@ int readlines(char ** l, size_t size, size_t lsize, FILE * f) {
 
     fgets(l[i], lsize, f);
     if (strchr(l[i], '\n') == NULL) {
-      fprintf(stderr, "line is too long!");
-      return 0;
+      if (i == 0) {
+        fprintf(stderr, "file is empty!");
+        return 0;
+      }
+      else {
+        fprintf(stderr, "line is too long!");
+        return 0;
+      }
     }
     else {
       if (l[i][lsize - 2] != '\n') {

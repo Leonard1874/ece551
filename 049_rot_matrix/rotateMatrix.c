@@ -61,7 +61,7 @@ int main(int argc, char ** argv) {
 
   size_t lsize = 12;
   size_t csize = 10;
-  char lines[csize][lsize];
+  char lines[10][12] = {{0}, {0}, {0}, {0}, {0}, {0}, {0}, {0}, {0}, {0}};
   /*
   char * plines[10] = {
       lines[0],
@@ -93,7 +93,7 @@ int main(int argc, char ** argv) {
 
   if (fgetc(f) != EOF) {
     fprintf(stderr, "too many lines!");
-    return 0;
+    return EXIT_FAILURE;
   }
 
   /*if (!(readlines(plines, csize, lsize, f))) {

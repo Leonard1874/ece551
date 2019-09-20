@@ -1,36 +1,14 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
-
+/*
 int readlines(char ** l, size_t size, size_t lsize, FILE * f) {
   size_t i = 0;
   while (i < size) {
-    /*
-    while ((fgets(l[i], lsize - 1, f)) != NULL) {
-      // fprintf(stdout, "i = %zu", i);
-      if (strchr(l[i], '\n') == NULL) {
-        fprintf(stderr, "line is too long!");
-        return 0;
-      }
-      else {
-        if (l[i][lsize - 1] != '\n') {
-          fprintf(stderr, "line is too short!");
-          return 0;
-        }
-      }
-      i++;
-    }*/
-
     fgets(l[i], lsize, f);
     if (strchr(l[i], '\n') == NULL) {
-      if (i == 0) {
-        fprintf(stderr, "file is empty!");
-        return 0;
-      }
-      else {
         fprintf(stderr, "line is too long!");
         return 0;
-      }
     }
     else {
       if (l[i][lsize - 2] != '\n') {
@@ -48,8 +26,9 @@ int readlines(char ** l, size_t size, size_t lsize, FILE * f) {
 
   return 1;
 }
-
-void printlines(char ** l, size_t lsize, size_t csize) {
+*/
+/*
+void printlines(char * l, size_t lsize, size_t csize) {
   for (size_t i = 0; i < csize; i++) {
     for (size_t j = 0; j < lsize - 2; j++) {
       fprintf(stdout, "%c", l[csize - 1 - j][i]);
@@ -59,7 +38,7 @@ void printlines(char ** l, size_t lsize, size_t csize) {
 
   return;
 }
-
+*/
 int main(int argc, char ** argv) {
   if (argc != 2) {
     fprintf(stderr, "wrong number of input!");
@@ -83,6 +62,7 @@ int main(int argc, char ** argv) {
   size_t lsize = 12;
   size_t csize = 10;
   char lines[csize][lsize];
+  /*
   char * plines[10] = {
       lines[0],
       lines[1],
@@ -94,13 +74,33 @@ int main(int argc, char ** argv) {
       lines[7],
       lines[8],
       lines[9],
-  };
-
-  if (!(readlines(plines, csize, lsize, f))) {
-    return EXIT_FAILURE;
+  };*/
+  size_t i = 0;
+  while (i < csize) {
+    fgets(lines[i], lsize, f);
+    if (strchr(lines[i], '\n') == NULL) {
+      fprintf(stderr, "line is too long!");
+      return EXIT_FAILURE;
+    }
+    else {
+      if (lines[i][lsize - 2] != '\n') {
+        fprintf(stderr, "line is too short!");
+        return EXIT_FAILURE;
+      }
+    }
+    i++;
   }
 
-  printlines(plines, lsize, csize);
+  /*if (!(readlines(plines, csize, lsize, f))) {
+    return EXIT_FAILURE;
+  }*/
+
+  for (size_t i = 0; i < csize; i++) {
+    for (size_t j = 0; j < lsize - 2; j++) {
+      fprintf(stdout, "%c", lines[csize - 1 - j][i]);
+    }
+    fprintf(stdout, "\n");
+  }
 
   if (fclose(f) != 0) {
     fprintf(stderr, "cannot close input!");

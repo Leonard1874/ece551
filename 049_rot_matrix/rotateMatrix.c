@@ -5,20 +5,35 @@
 int readlines(char ** l, size_t size, size_t lsize, FILE * f) {
   size_t i = 0;
   while (i < size) {
-    while ((fgets(l[i], lsize, f)) != NULL) {
+    /*
+    while ((fgets(l[i], lsize - 1, f)) != NULL) {
       // fprintf(stdout, "i = %zu", i);
       if (strchr(l[i], '\n') == NULL) {
         fprintf(stderr, "line is too long!");
         return 0;
       }
       else {
-        if (l[i][lsize - 2] != '\n') {
+        if (l[i][lsize - 1] != '\n') {
           fprintf(stderr, "line is too short!");
           return 0;
         }
       }
-      i += 1;
+      i++;
+    }*/
+    fgets(l[i], lsize, f);
+    // fprintf(stdout, "%s", l[i]);
+    // fprintf(stdout, "i = %zu", i);
+    if (strchr(l[i], '\n') == NULL) {
+      fprintf(stderr, "line is too long!");
+      return 0;
     }
+    else {
+      if (l[i][lsize - 2] != '\n') {
+        fprintf(stderr, "line is too short!");
+        return 0;
+      }
+    }
+    i++;
   }
   return 1;
 }
@@ -51,16 +66,18 @@ int main(int argc, char ** argv) {
   size_t lsize = 12;
   size_t csize = 10;
   char lines[csize][lsize];
-  char * plines[] = {lines[0],
-                     lines[1],
-                     lines[2],
-                     lines[3],
-                     lines[4],
-                     lines[5],
-                     lines[6],
-                     lines[7],
-                     lines[8],
-                     lines[9]};
+  char * plines[] = {
+      lines[0],
+      lines[1],
+      lines[2],
+      lines[3],
+      lines[4],
+      lines[5],
+      lines[6],
+      lines[7],
+      lines[8],
+      lines[9],
+  };
 
   if (!(readlines(plines, csize, lsize, f))) {
     return EXIT_FAILURE;

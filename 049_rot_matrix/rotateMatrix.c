@@ -91,6 +91,11 @@ int main(int argc, char ** argv) {
     i++;
   }
 
+  if (fgetc(f) != EOF) {
+    fprintf(stderr, "too many lines!");
+    return 0;
+  }
+
   /*if (!(readlines(plines, csize, lsize, f))) {
     return EXIT_FAILURE;
   }*/

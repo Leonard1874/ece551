@@ -1,0 +1,15 @@
+Grading at 09/23/2019:14:38:55.657765
+For commit ID 48f2944523a84741c1fa2b228fbf28b40ade8988
+Grading at Mon Sep 23 10:38:54 EDT 2019
+I expected to find a file called 'leaks.txt' but it did not exist
+(or was not a regular file)
+Here are the files that I can find:
+Makefile
+README
+test.c
+Your output did not match what we expected.
+Attempting to compile test.c
+  - Valgrind was clean (no errors, no memory leaks)
+valgrind was clean
+
+Overall Grade: F

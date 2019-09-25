@@ -5,13 +5,50 @@
 #include <stdio.h>
 #include <string.h>
 
-int checkerror(const char * line, int i1, int i2, int len) {
+int checkerror(const char * line, size_t * index1, size_t * index2) {
+  size_t len = 0;
+  if ((len = strlen(line)) == 0) {
+    printf("empty!\n");
+    return 0;
+  }
+
+  int count = 0;
+  size_t i1 = 0;
+  size_t i2 = 0;
+
+  for (size_t i = 0; i < len; i++) {
+    if (line[i] == ':') {
+      if (count == 0) {
+        i1 = i;
+      }
+      if (count == 1) {
+        i2 = i;
+      }
+      count += 1;
+    }
+  }
+  if (count > 2) {
+    printf("too many ':'!\n ");
+    return 0;
+  }
+
+  if (count < 2) {
+    printf("too few ':'!\n");
+    return 0;
+  }
+
+  if (i1 >= 64) {
+    printf("the first part is too long!\n");
+    return 0;
+  }
+
   //check erros in the content of the first part
   if (i2 - i1 <= 1 || i1 == 0 || i2 == len - 1) {
     printf("missing content!\n");
     return 0;
   }
 
+  /*
   int countspc = 0;
 
   if (isspace(line[0]) || isspace(line[i1 - 1])) {
@@ -35,95 +72,107 @@ int checkerror(const char * line, int i1, int i2, int len) {
     printf("the first part only has space!\n");
     return 0;
   }
+  */
+
+  *index1 = i1;
+  *index2 = i2;
 
   //check errors in the second part
-  for (int j2 = i1 + 1; j2 < i2; j2++) {
-    if (!(isdigit(line[j2]))) {
+  for (size_t j = i1 + 1; j < i2; j++) {
+    if (!(isdigit(line[j]))) {
       printf("the second part contains wrong character!\n");
       return 0;
     }
   }
-  for (int j3 = i2 + 1; j3 < len; j3++) {
-    if (!(isdigit(line[j3]))) {
+  for (size_t k = i2 + 1; k < len; k++) {
+    if (!(isdigit(line[k]))) {
       printf("the third part contains wrong character!\n");
       return 0;
     }
   }
-  if (atoi(line + i1 + 1) <= 0) {
-    printf("the second part's number is too small!\n");
+
+  return 1;
+}
+
+int extractnums(const char * line,
+                size_t i1,
+                size_t i2,
+                uint64_t * pop,
+                unsigned int * ev) {
+  size_t len = strlen(line);
+
+  if ((len - 1 - i2 - 1) > 10) {
+    printf("the third part number is too large!\n");
     return 0;
   }
 
-  if (atoi(line + i2 + 1) <= 0) {
-    printf("the third part's number is too small!\n");
+  char * end2;
+  uint64_t evt = 0;
+  if ((evt = strtoul(line + i2 + 1, &end2, 10)) > UINT32_MAX) {
+    printf("the third part number is too large!!\n");
     return 0;
   }
-  //???
-  // if(atoi(line + i2 +1) > UINT_MAX)
-  // is(atoi(line + i1 +1) > INT_MAX)
+
+  *ev = evt;
+
+  if ((i2 - i1 - 1) > 20) {
+    printf("the second part number is too large!\n");
+    return 0;
+  }
+
+  char * end1;
+  uint64_t popt = strtoul(line + i1 + 1, &end1, 10);
+  if ((i2 - i1 - 1) == 20) {
+    char high[] = {"0"};
+    uint64_t popt1 = 0;
+    popt1 = strtoul(line + i1 + 2, &end1, 10);
+    high[0] = line[i1 + 1];
+    if (atoi(high) > 1) {
+      printf("the second part is too large!!\n");
+      return 0;
+    }
+    if (popt1 > 8446744073709551615) {
+      printf("the second part is too large!!!\n");
+      return 0;
+    }
+  }
+  *pop = popt;
+
   return 1;
 }
 
 state_t parseLine(const char * line) {
   //STEP 1: write me
-  //if line is empty, error
-  int len = 0;
-  if ((len = strlen(line)) == 0) {
-    printf("empty!\n");
-    exit(EXIT_FAILURE);
-  }
-  //count the number of ':', if there are more or less than 2 ':', error
-  //get the indexes of two ':', save in in1, in2
-  int i1 = 0;
-  int i2 = 0;
-  int count = 0;
-  for (int i = 0; i < len; i++) {
-    if (line[i] == ':') {
-      if (count == 0) {
-        i1 = i;
-      }
-      if (count == 1) {
-        i2 = i;
-      }
-      count += 1;
-    }
-  }
-  if (count > 2) {
-    printf("too many ':'!\n ");
-    exit(EXIT_FAILURE);
-  }
+  size_t i1 = 0;
+  size_t i2 = 0;
+  size_t * index1 = &i1;
+  size_t * index2 = &i2;
 
-  if (count < 2) {
-    printf("too few ':'!\n");
-    exit(EXIT_FAILURE);
-  }
-
-  if (i1 >= 64) {
-    printf("the first part is too long!\n");
-    exit(EXIT_FAILURE);
-  }
-
-  //check other errors
-  if (!(checkerror(line, i1, i2, len))) {
+  if (!checkerror(line, index1, index2)) {
     exit(EXIT_FAILURE);
   }
 
   state_t st;
 
   //load state name
-  for (int k = 0; k < i1; k++) {
+  for (size_t k = 0; k < i1; k++) {
     st.name[k] = line[k];
   }
 
   //add '\0' at the end, to initialize unsued space
   st.name[i1] = '\0';
 
-  //load population
-  uint64_t pop = atoi(line + i1 + 1);
-  st.population = pop;
+  //load population and eletoral votes
+  uint64_t pop = 0;
+  uint64_t * popp = &pop;
+  unsigned int ev = 0;
+  unsigned int * evp = &ev;
 
-  //load electoralvotes
-  unsigned int ev = atoi(line + i2 + 1);
+  if (!extractnums(line, i1, i2, popp, evp)) {
+    exit(EXIT_FAILURE);
+  }
+
+  st.population = pop;
   st.electoralVotes = ev;
 
   return st;

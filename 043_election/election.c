@@ -6,6 +6,7 @@
 #include <string.h>
 
 int checkerror(const char * line, int i1, int i2, int len) {
+  //check erros in the content of the first part
   if (i2 - i1 <= 1 || i1 == 0 || i2 == len - 1) {
     printf("missing content!\n");
     return 0;
@@ -35,6 +36,7 @@ int checkerror(const char * line, int i1, int i2, int len) {
     return 0;
   }
 
+  //check errors in the second part
   for (int j2 = i1 + 1; j2 < i2; j2++) {
     if (!(isdigit(line[j2]))) {
       printf("the second part contains wrong character!\n");
@@ -70,7 +72,7 @@ state_t parseLine(const char * line) {
     printf("empty!\n");
     exit(EXIT_FAILURE);
   }
-  //if there are more or less than 2 ':', error
+  //count the number of ':', if there are more or less than 2 ':', error
   //get the indexes of two ':', save in in1, in2
   int i1 = 0;
   int i2 = 0;
@@ -108,30 +110,26 @@ state_t parseLine(const char * line) {
 
   state_t st;
 
-  /* for (int j = 0; j < MAX_STATE_NAME_LENGTH; j++) {
-    st.name[j] = '0';
-  }*/
-
   //load state name
   for (int k = 0; k < i1; k++) {
     st.name[k] = line[k];
   }
 
+  //add '\0' at the end, to initialize unsued space
   st.name[i1] = '\0';
 
   //load population
-
   uint64_t pop = atoi(line + i1 + 1);
   st.population = pop;
 
   //load electoralvotes
-
   unsigned int ev = atoi(line + i2 + 1);
   st.electoralVotes = ev;
 
   return st;
 }
 
+//counting the percentage of vote
 double countpercent(state_t state, uint64_t votecount) {
   double all = 0.0;
   double vote = 0.0;
@@ -139,6 +137,7 @@ double countpercent(state_t state, uint64_t votecount) {
   all = state.population;
   vote = votecount;
   // printf("%ld, %f\n", votecount, vote);
+  //check if 0 <= vote <= population
   if (vote > all || vote < 0 || votecount < 0 || votecount > state.population) {
     printf("invalid vote counts!\n");
     return -1;
@@ -155,6 +154,7 @@ unsigned int countElectoralVotes(state_t * stateData,
   unsigned int sum = 0;
   double percent = 0.0;
   for (size_t i = 0; i < nStates; i++) {
+    //save the percent of vaote in percent, if error occurs in countpercent, exit
     if ((percent = countpercent(stateData[i], voteCounts[i])) < 0) {
       exit(EXIT_FAILURE);
     }
@@ -177,9 +177,11 @@ void printRecounts(state_t * stateData, uint64_t * voteCounts, size_t nStates) {
   double percent = 0.0;
 
   for (size_t i = 0; i < nStates; i++) {
+    //save the percent of vaote in percent, if error occurs in countpercent, exit
     if ((percent = countpercent(stateData[i], voteCounts[i])) < 0) {
       exit(EXIT_FAILURE);
     }
+
     if (percent >= 0.495 && percent <= 0.505) {
       printf("%s requires a recount (Candidate A has %.2f%% of the vote)\n",
              stateData[i].name,
@@ -196,9 +198,12 @@ void printLargestWin(state_t * stateData, uint64_t * voteCounts, size_t nStates)
   double percent = 0.0;
 
   for (size_t i = 0; i < nStates; i++) {
+    //save the percent of vaote in percent, if error occurs in countpercent, exit
     if ((percent = countpercent(stateData[i], voteCounts[i])) < 0) {
       exit(EXIT_FAILURE);
     }
+
+    //if percent > 50% and no need for recount, win
     if (percent > 0.505) {
       printf("Candidate A won %s with %.2f%% of the vote\n",
              stateData[i].name,
@@ -206,4 +211,5 @@ void printLargestWin(state_t * stateData, uint64_t * voteCounts, size_t nStates)
     }
     percent = 0.0;
   }
+  return;
 }

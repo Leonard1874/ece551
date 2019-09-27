@@ -155,9 +155,6 @@ state_t parseLine(const char * line) {
   size_t i1 = 0;
   size_t i2 = 0;
   size_t len = 0;
-  //size_t * index1 = &i1;
-  //size_t * index2 = &i2;
-  //size_t * length = &len;
 
   if (check_genral_format(line, &i1, &i2, &len)) {
     exit(EXIT_FAILURE);
@@ -179,9 +176,7 @@ state_t parseLine(const char * line) {
 
   //load population and eletoral votes
   uint64_t pop = 0;
-  // uint64_t * popp = &pop;
   unsigned int ev = 0;
-  // unsigned int * evp = &ev;
 
   if (check_extract_ev(line, i2, len, &ev)) {
     exit(EXIT_FAILURE);
@@ -256,6 +251,8 @@ void printRecounts(state_t * stateData, uint64_t * voteCounts, size_t nStates) {
 void printLargestWin(state_t * stateData, uint64_t * voteCounts, size_t nStates) {
   //STEP 4: write me
   double percent = 0.0;
+  double max = 0.0;
+  size_t maxindex = 0;
 
   for (size_t i = 0; i < nStates; i++) {
     //save the percent of vaote in percent, if error occurs in countpercent, exit
@@ -263,11 +260,21 @@ void printLargestWin(state_t * stateData, uint64_t * voteCounts, size_t nStates)
       exit(EXIT_FAILURE);
     }
 
-    //if percent > 50% and no need for recount, win
+    //if percent > 50% and no need for recount, win, then compare which is largest
     if (percent > 0.505) {
-      printf("Candidate A won %s with %.2f%% of the vote\n",
-             stateData[i].name,
-             percent * 100);
+      if (percent > max) {
+        max = percent;
+        maxindex = i;
+      }
     }
+  }
+
+  if (max == 0.0 && maxindex == 0) {
+    printf("Sadly, our candidate doesn't win any state...\n");
+  }
+  else {
+    printf("Candidate A won %s with %.2f%% of the vote\n",
+           stateData[maxindex].name,
+           max * 100);
   }
 }

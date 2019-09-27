@@ -251,8 +251,6 @@ void printRecounts(state_t * stateData, uint64_t * voteCounts, size_t nStates) {
     }
     percent = 0.0;
   }
-
-  return;
 }
 
 void printLargestWin(state_t * stateData, uint64_t * voteCounts, size_t nStates) {
@@ -271,7 +269,5 @@ void printLargestWin(state_t * stateData, uint64_t * voteCounts, size_t nStates)
              stateData[i].name,
              percent * 100);
     }
-    percent = 0.0;
   }
-  return;
 }

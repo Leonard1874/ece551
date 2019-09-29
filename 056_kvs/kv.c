@@ -6,16 +6,18 @@
 
 void parseline(char * line, kvarray_t * array) {
   size_t i = 0;
-  while (i <= strlen(line) - 1) {
+  while (i < strlen(line)) {
     if (line[i] == '=') {
       break;
     }
     i++;
+    // printf("%zu\n",i);
   }
+  /*
   if (i == strlen(line)) {
     printf("there is no =\n");
     exit(EXIT_FAILURE);
-  }
+  }*/
   if (array->sz == 0) {
     array->kvarray = malloc(sizeof(*array->kvarray));
     array->sz += 1;

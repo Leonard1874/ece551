@@ -25,7 +25,7 @@ void parseline(char * line, kvarray_t * array) {
     array->sz += 1;
   }
   array->kvarray[array->sz - 1].key = strndup(line, i);
-  array->kvarray[array->sz - 1].value = strdup(line + i + 1);
+  array->kvarray[array->sz - 1].value = strndup(line + i + 1, strlen(line + i + 1) - 1);
 }
 
 kvarray_t * readKVs(const char * fname) {

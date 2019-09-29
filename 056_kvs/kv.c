@@ -61,7 +61,6 @@ kvarray_t * readKVs(const char * fname) {
   */
   free(cur);
   for (size_t j = 0; j < i; j++) {
-    //printf("%s", lines[j]);
     if (strchr(lines[j], '=') == NULL || lines[j][0] == '\n') {
       free(lines[j]);
     }
@@ -79,7 +78,7 @@ kvarray_t * readKVs(const char * fname) {
 }
 void freeKVs(kvarray_t * pairs) {
   //WRITE ME
-  printf("%d", pairs->sz);
+  //printf("%d", pairs->sz);
   for (int i = 0; i < pairs->sz; i++) {
     free(pairs->kvarray[i].key);
     free(pairs->kvarray[i].value);

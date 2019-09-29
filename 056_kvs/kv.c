@@ -16,11 +16,12 @@ void parseline(char * line, kvarray_t * array) {
     }
     i++;
   }
-  /*
+
   if (i == strlen(line)) {
     printf("there is no =\n");
     exit(EXIT_FAILURE);
-  }*/
+  }
+
   if (array->sz == 0) {
     array->kvarray = malloc(sizeof(*array->kvarray));
     array->sz += 1;

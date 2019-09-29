@@ -5,13 +5,16 @@
 #include <string.h>
 
 void parseline(char * line, kvarray_t * array) {
+  if (strlen(line) == 0) {
+    printf("empty!\n");
+    exit(EXIT_FAILURE);
+  }
   size_t i = 0;
   while (i < strlen(line)) {
     if (line[i] == '=') {
       break;
     }
     i++;
-    // printf("%zu\n",i);
   }
   /*
   if (i == strlen(line)) {
@@ -49,6 +52,18 @@ kvarray_t * readKVs(const char * fname) {
     cur = NULL;
     i++;
   }
+
+  //printf("%zu", i);
+  if (i == 1) {
+    printf("the file is empty!\n");
+    free(cur);
+    free(lines[0]);
+    free(lines);
+    fclose(f);
+    free(array);
+    exit(EXIT_FAILURE);
+  }
+
   free(cur);
   for (size_t j = 0; j < i; j++) {
     parseline(lines[j], array);

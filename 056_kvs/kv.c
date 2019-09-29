@@ -48,7 +48,7 @@ kvarray_t * readKVs(const char * fname) {
     cur = NULL;
     i++;
   }
-
+  /*
   if (i == 1) {
     printf("the file is empty!\n");
     free(cur);
@@ -58,11 +58,11 @@ kvarray_t * readKVs(const char * fname) {
     free(array);
     exit(EXIT_FAILURE);
   }
-
+  */
   free(cur);
   for (size_t j = 0; j < i; j++) {
-    if (lines[j][0] == '\n') {
-      //printf("empty line\n");
+    //printf("%s", lines[j]);
+    if (strchr(lines[j], '=') == NULL || lines[j][0] == '\n') {
       free(lines[j]);
     }
     else {
@@ -79,11 +79,14 @@ kvarray_t * readKVs(const char * fname) {
 }
 void freeKVs(kvarray_t * pairs) {
   //WRITE ME
+  printf("%d", pairs->sz);
   for (int i = 0; i < pairs->sz; i++) {
     free(pairs->kvarray[i].key);
     free(pairs->kvarray[i].value);
   }
-  free(pairs->kvarray);
+  if (pairs->sz != 0) {
+    free(pairs->kvarray);
+  }
   free(pairs);
 }
 

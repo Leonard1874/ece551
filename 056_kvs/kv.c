@@ -5,10 +5,6 @@
 #include <string.h>
 
 void parseline(char * line, kvarray_t * array) {
-  if (strlen(line) == 0) {
-    printf("empty!\n");
-    exit(EXIT_FAILURE);
-  }
   size_t i = 0;
   while (i < strlen(line)) {
     if (line[i] == '=') {
@@ -31,6 +27,10 @@ void parseline(char * line, kvarray_t * array) {
 
 kvarray_t * readKVs(const char * fname) {
   //WRITE ME
+  if (fname == NULL) {
+    printf("cannot be NULL!\n");
+    exit(EXIT_FAILURE);
+  }
   FILE * f = fopen(fname, "r");
   if (f == NULL) {
     fprintf(stderr, "cannot open file!");

@@ -17,11 +17,6 @@ void parseline(char * line, kvarray_t * array) {
     i++;
   }
 
-  if (i == strlen(line)) {
-    printf("there is no =\n");
-    exit(EXIT_FAILURE);
-  }
-
   if (array->sz == 0) {
     array->kvarray = malloc(sizeof(*array->kvarray));
     array->sz += 1;
@@ -54,7 +49,6 @@ kvarray_t * readKVs(const char * fname) {
     i++;
   }
 
-  //printf("%zu", i);
   if (i == 1) {
     printf("the file is empty!\n");
     free(cur);
@@ -67,8 +61,14 @@ kvarray_t * readKVs(const char * fname) {
 
   free(cur);
   for (size_t j = 0; j < i; j++) {
-    parseline(lines[j], array);
-    free(lines[j]);
+    if (lines[j][0] == '\n') {
+      //printf("empty line\n");
+      free(lines[j]);
+    }
+    else {
+      parseline(lines[j], array);
+      free(lines[j]);
+    }
   }
   free(lines);
   if (fclose(f) != 0) {

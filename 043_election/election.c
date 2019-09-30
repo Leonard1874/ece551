@@ -6,7 +6,7 @@
 #include <string.h>
 
 /*This function is used to check if the string has the format "XXX:XXX:XXX" 
-If the format is roght, modify the value i1,i2,len in parseline*/
+If the format is right, modify the value i1,i2,len in parseline*/
 
 int check_genral_format(const char * line,
                         size_t * index1,
@@ -15,7 +15,7 @@ int check_genral_format(const char * line,
   //check if the string is empty
   size_t len = 0;
   if ((len = strlen(line)) == 0) {
-    printf("empty!\n");
+    fprintf(stderr, "empty!\n");
     return EXIT_FAILURE;
   }
 
@@ -36,23 +36,23 @@ int check_genral_format(const char * line,
     }
   }
   if (count > 2) {
-    printf("too many ':'!\n ");
+    fprintf(stderr, "too many ':'!\n ");
     return EXIT_FAILURE;
   }
 
   if (count < 2) {
-    printf("too few ':'!\n");
+    fprintf(stderr, "too few ':'!\n");
     return EXIT_FAILURE;
   }
 
   if (i1 >= 64) {
-    printf("the first part is too long!\n");
+    fprintf(stderr, "the first part is too long!\n");
     return EXIT_FAILURE;
   }
 
   //check if the first, seond, third part is empty
   if (i2 - i1 <= 1 || i1 == 0 || i2 == len - 1) {
-    printf("missing content!\n");
+    fprintf(stderr, "missing content!\n");
     return EXIT_FAILURE;
   }
 
@@ -70,12 +70,12 @@ int check_num_format(const char * line, size_t i1, size_t i2, size_t len) {
   //check errors in the second part
   for (size_t j = i1 + 1; j < i2; j++) {
     if (j == i1 + 1 && line[j] == '0') {
-      printf("the first number cannot be 0!\n");
+      fprintf(stderr, "the first number cannot be 0!\n");
       return EXIT_FAILURE;
     }
 
     if (!(isdigit(line[j]))) {
-      printf("the second part contains wrong character!\n");
+      fprintf(stderr, "the second part contains wrong character!\n");
       return EXIT_FAILURE;
     }
   }
@@ -83,12 +83,12 @@ int check_num_format(const char * line, size_t i1, size_t i2, size_t len) {
   //check errors in the thrid part
   for (size_t k = i2 + 1; k < len; k++) {
     if (k == i1 + 1 && line[k] == '0') {
-      printf("the first number cannot be 0!\n");
+      fprintf(stderr, "the first number cannot be 0!\n");
       return EXIT_FAILURE;
     }
 
     if (!(isdigit(line[k]))) {
-      printf("the third part contains wrong character!\n");
+      fprintf(stderr, "the third part contains wrong character!\n");
       return EXIT_FAILURE;
     }
   }
@@ -102,7 +102,7 @@ int check_extract_ev(const char * line, size_t i2, size_t len, unsigned int * ev
   //start with 0?? test!
   //first, check if the number is longer than UINT32_MAX, if longer, then larger
   if ((len - 1 - i2 - 1) > 10) {
-    printf("the third part number is too large!\n");
+    fprintf(stderr, "the third part number is too large!\n");
     return EXIT_FAILURE;
   }
 
@@ -110,7 +110,7 @@ int check_extract_ev(const char * line, size_t i2, size_t len, unsigned int * ev
   char * end2;
   uint64_t evt = 0;
   if ((evt = strtoul(line + i2 + 1, &end2, 10)) > UINT32_MAX) {
-    printf("the third part number is too large!!\n");
+    fprintf(stderr, "the third part number is too large!!\n");
     return EXIT_FAILURE;
   }
 
@@ -124,7 +124,7 @@ for the given type, if not, extract it */
 int check_extract_pop(const char * line, size_t i1, size_t i2, uint64_t * pop) {
   //check length
   if ((i2 - i1 - 1) > 20) {
-    printf("the second part number is too large!\n");
+    fprintf(stderr, "the second part number is too large!\n");
     return EXIT_FAILURE;
   }
 
@@ -137,11 +137,11 @@ int check_extract_pop(const char * line, size_t i1, size_t i2, uint64_t * pop) {
     popt1 = strtoul(line + i1 + 2, &end1, 10);
     high[0] = line[i1 + 1];
     if (atoi(high) > 1) {
-      printf("the second part is too large!!\n");
+      fprintf(stderr, "the second part is too large!!\n");
       return EXIT_FAILURE;
     }
     if (popt1 > 8446744073709551615) {
-      printf("the second part is too large!!!\n");
+      fprintf(stderr, "the second part is too large!!!\n");
       return EXIT_FAILURE;
     }
   }
@@ -202,9 +202,10 @@ double countpercent(state_t state, uint64_t votecount, double * percent) {
   vote = votecount;
 
   if (votecount < 0 || votecount > state.population) {
-    printf("invalid vote counts!\n");
+    fprintf(stderr, "invalid vote counts!\n");
     return EXIT_FAILURE;
   }
+
   *percent = vote / all;
   return EXIT_SUCCESS;
 }

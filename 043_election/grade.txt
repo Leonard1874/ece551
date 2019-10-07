@@ -1,12 +1,86 @@
-Grading at 09/30/2019:16:11:19.394200
+Grading at 10/07/2019:18:59:46.502722
 For commit ID 21b5ed13c09cdecc9aa15deee9732d90980d6151
-Grading at Mon Sep 30 12:11:18 EDT 2019
-[32mfound function state_t  parseLine(const char * line)[0m
-[32mfound function unsigned int countElectoralVotes(state_t * stateData, uint64_t * voteCounts, size_t   nStates)[0m
-[32mfound function void printRecounts(state_t * stateData, uint64_t * voteCounts, size_t nStates)[0m
-[32mfound function void printLargestWin(state_t * stateData, uint64_t * voteCounts, size_t nStates)[0m
-running passed-in stu_imp ./printStates
-[32mSuccessfully compiled .[0m
-checking if there is output in parseLine and countElectoralVotes
-[32mno spurious debug output in parseLine or countElectoralVotes[0m
-Overall Grade: NO GRADE YET
+Grading at Mon Oct  7 14:59:26 EDT 2019
+election.c exists (good)
+Attempting to compile election.c
+rm -f *~ printStates printEVotes printRecounts printLargeWin
+gcc -ggdb3 -Wall -Werror -std=gnu99 election.c printStates.o -o printStates
+gcc -ggdb3 -Wall -Werror -std=gnu99 election.c printEVotes.o -o printEVotes
+gcc -ggdb3 -Wall -Werror -std=gnu99 election.c printRecounts.o -o printRecounts
+gcc -ggdb3 -Wall -Werror -std=gnu99 election.c printLargeWin.o -o printLargeWin
+#################################################
+testcase1 of step1:
+testcase1 passed [1/1]
+#################################################
+testcase2 of step1:
+testcase2 passed [1/1]
+#################################################
+testcase3 of step1:
+testcase3 passed [1/1]
+#################################################
+testcase4 of step1:
+testcase4 passed [1/1]
+#################################################
+testcase5 of step1:
+Your file matched the expected output
+testcase5 passed [10/10]
+#################################################
+testcase6 of step1:
+Difficult corner cases
+Your file matched the expected output
+testcase6 passed [6/6]
+#################################################
+testcase1 of step2:
+Your output is correct [8/8]
+#################################################
+testcase2 of step2:
+Your output is correct [8/8]
+#################################################
+testcase3 of step2:
+Your output is correct [8/8]
+#################################################
+testcase4 of step2:
+Difficult corner cases
+Your output is correct [6/6]
+#################################################
+testcase1 of step3:
+Your output is correct [6/6]
+#################################################
+testcase2 of step3:
+Your output is correct [6/6]
+#################################################
+testcase3 of step3:
+Your output is correct [6/6]
+#################################################
+testcase4 of step3:
+Difficult corner cases
+Your output is correct [2/2]
+#################################################
+testcase1 of step4:
+Your output is correct [8/8]
+#################################################
+testcase2 of step4:
+Your output is correct [8/8]
+#################################################
+testcase3 of step4:
+Your output is correct [8/8]
+#################################################
+testcase4 of step4:
+Difficult corner cases
+Your output is correct [6/6]
+-----------------------------------
+Functionality:  100 points / 100
+------------------------------------
+Code quality:
+ - Format:      3 / 3
+ - Comments:    3 / 3
+ - Abstraction: 2 / 2
+ - Other:       2 / 2
+ Notes from your TA (Yang):
+Very comprehensive format checking. The code has great format and comments. Abstraction is good, but certain helper function is quite long(No points taken). It is a good practice to implement more string functions in the code for better readability.
+------------------------------
+Total quality:   10 / 10
+------------------------------
+Overall grade = functionality *0.9 + quality
+
+Overall Grade: 100.0

@@ -1,10 +1,7 @@
-Grading at 10/08/2019:19:58:06.592487
-For commit ID 11e4a41f06029ee5044d7e4d5dbe475060f3f9c2
-Grading at Tue Oct  8 15:58:06 EDT 2019
-Line_2_did_not_match
-Line_3_did_not_match
-Line_6_did_not_match
-Your file did not match the expected ouput
-Your output did not match what we expected.
+Grading at 10/08/2019:20:00:07.114183
+For commit ID afb5f35879750c9bf4ff29c296c6ef11a1d25809
+Grading at Tue Oct  8 16:00:07 EDT 2019
+Your file matched the expected output
+Your output matched what we expected
 
-Overall Grade: FAILED
+Overall Grade: PASSED

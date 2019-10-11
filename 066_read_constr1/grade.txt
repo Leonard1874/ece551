@@ -1,7 +1,11 @@
-Grading at 10/11/2019:20:13:50.032914
-For commit ID 5a4018c5185de801fe59981e2b170f69b5937b44
-Grading at Fri Oct 11 16:13:49 EDT 2019
+Grading at 10/11/2019:20:17:50.361690
+For commit ID d6a0d77fd0fe4eb122b4bffd8c3092db6f8dcc27
+Grading at Fri Oct 11 16:17:50 EDT 2019
 Attempting to compile:
-You do not have a Makefile
+g++    -c -o code.o code.cpp
+g++ -o code code.o
+Your Makefile produced a binary called 'code'
+Your file matched the expected output
+Your output matched what we expected
 
-Overall Grade: FAILED
+Overall Grade: PASSED

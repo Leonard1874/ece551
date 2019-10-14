@@ -111,7 +111,8 @@ void print_first_3(char * filename,
          ans->st_blksize,
          filetype);
 
-  //the third line, if filetype is character or block, print device type too
+  //the third line, if filetype is character or block, print device type too, in Ubuntu,
+  //the format of device type is hex, as required in README, here using %d.
   if (!strcmp(filetype, "character special file") ||
       !strcmp(filetype, "block special file")) {
     printf("Device: %lxh/%lud\tInode: %-10lu  Links: %-5lu Device type: %d,%d\n",
@@ -119,8 +120,8 @@ void print_first_3(char * filename,
            ans->st_dev,
            ans->st_ino,
            ans->st_nlink,
-           major(ans->st_dev),
-           minor(ans->st_dev));
+           major(ans->st_rdev),
+           minor(ans->st_rdev));
   }
   else {
     printf("Device: %lxh/%lud\tInode: %-10lu  Links: %lu\n",
@@ -145,6 +146,7 @@ void construct_access(char * access, int * Sarr, struct stat * ans) {
         access[i] = 'w';
       }
       //bit 3,6,9 -- x/-
+      //some bit 9 would be t, here don't consider it
       if (i % 3 == 0) {
         access[i] = 'x';
       }
@@ -184,7 +186,7 @@ void print_time(struct stat * ans) {
 int main(int argc, char ** argv) {
   //check the number of arguments
   if (argc <= 1) {
-    fprintf(stderr, "wrong number of argument/n");
+    fprintf(stderr, "wrong number of argument\n");
     exit(EXIT_FAILURE);
   }
   //for each argv (filename), repeat the same process
@@ -201,7 +203,7 @@ int main(int argc, char ** argv) {
         S_IRUSR, S_IWUSR, S_IXUSR, S_IRGRP, S_IWGRP, S_IXGRP, S_IROTH, S_IWOTH, S_IXOTH};
 
     if (load_info(argv[i], &ans, &p, &g)) {
-      exit(EXIT_FAILURE);
+      continue;
     }
 
     get_type(filetype, access, &ans);

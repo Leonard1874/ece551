@@ -202,9 +202,7 @@ int main(int argc, char ** argv) {
     int Sarr[] = {
         S_IRUSR, S_IWUSR, S_IXUSR, S_IRGRP, S_IWGRP, S_IXGRP, S_IROTH, S_IWOTH, S_IXOTH};
 
-    if (load_info(argv[i], &ans, &p, &g)) {
-      continue;
-    }
+    load_info(argv[i], &ans, &p, &g);
 
     get_type(filetype, access, &ans);
 

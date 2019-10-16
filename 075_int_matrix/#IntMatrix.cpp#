@@ -20,6 +20,7 @@ IntMatrix::IntMatrix(const IntMatrix & rhs) :
     }
   }
 }
+
 IntMatrix::~IntMatrix() {
 }
 IntMatrix & IntMatrix::operator=(const IntMatrix & rhs) {

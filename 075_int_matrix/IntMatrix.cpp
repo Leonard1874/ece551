@@ -24,6 +24,9 @@ IntMatrix::IntMatrix(const IntMatrix & rhs) :
   }
 }
 IntMatrix::~IntMatrix() {
+  for (int i = 0; i < numRows; i++) {
+    delete rows[i];
+  }
   delete[] rows;
 }
 

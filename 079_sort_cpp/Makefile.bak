@@ -9,4 +9,3 @@ clean:
 	rm -r *.o *.cpp~ *.h~
 depend:
 	makedepend $(SRCS)
-# DO NOT DELETE

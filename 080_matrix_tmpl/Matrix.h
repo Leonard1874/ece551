@@ -96,21 +96,29 @@ std::ostream & operator<<(std::ostream & s, const Matrix<T> & rhs) {
   s << "[ ";
   for (int i = 0; i < rhs.getRows(); i++) {
     if (i < rhs.getRows() - 1) {
+      s << "{";
       for (int j = 0; j < rhs.getColumns(); j++) {
-        if (j > 0) {
-          s << ", ";
+        if (j < rhs.getColumns() - 1) {
+          s << rhs[i][j] << ", ";
         }
-        s << rhs[i][j];
+        else {
+          s << rhs[i][j];
+        }
       }
-      s << "\n";
+      s << "}";
+      s << ",\n";
     }
     else {
+      s << "{";
       for (int j = 0; j < rhs.getColumns(); j++) {
-        if (j > 0) {
-          s << ", ";
+        if (j < rhs.getColumns() - 1) {
+          s << rhs[i][j] << ", ";
         }
-        s << rhs[i][j];
+        else {
+          s << rhs[i][j];
+        }
       }
+      s << "}";
     }
   }
   s << " ]";

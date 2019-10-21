@@ -1,6 +1,6 @@
-Grading at 10/21/2019:16:55:58.630208
-For commit ID cf2084107b41e18254b275f4a12af7470e8c2808
-Grading at Mon Oct 21 12:55:52 EDT 2019
+Grading at 10/21/2019:17:05:42.313994
+For commit ID 8ab3f1a12eb5aee407392ca96528fbacd6dee674
+Grading at Mon Oct 21 13:05:35 EDT 2019
 Looking for malloc in your files
 No uses found (good).
 Looking for free in your files
@@ -33,6 +33,8 @@ Your output is correct
 valgrind was clean
 #################################################
 testcase4:
-Your output is incorrect
+Your output is correct
+  - Valgrind was clean (no errors, no memory leaks)
+valgrind was clean
 
-Overall Grade: C
+Overall Grade: A

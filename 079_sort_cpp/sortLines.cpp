@@ -40,6 +40,7 @@ int main(int argc, char ** argv) {
         }
         std::sort(lines.begin(), lines.end());
         printvec(lines);
+        lines.clear();
       }
       else {
         std::cerr << "cannot open file!\n";

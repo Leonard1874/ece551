@@ -38,9 +38,11 @@ int main(int argc, char ** argv) {
         while (getline(ifs, line).good()) {
           lines.push_back(line);
         }
+        std::sort(lines.begin(), lines.end());
+        printvec(lines);
       }
       else {
-        std::cout << "cannot open file!";
+        std::cerr << "cannot open file!\n";
         ifs.clear();
         return EXIT_FAILURE;
       }
@@ -51,8 +53,8 @@ int main(int argc, char ** argv) {
       getline(std::cin, line);
       lines.push_back(line);
     }
+    std::sort(lines.begin(), lines.end());
+    printvec(lines);
   }
-  std::sort(lines.begin(), lines.end());
-  printvec(lines);
   return EXIT_SUCCESS;
 }

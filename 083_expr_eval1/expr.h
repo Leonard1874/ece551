@@ -21,6 +21,7 @@ class NumExpression : public Expression {
     std::string s(ss.str());
     return s;
   }
+  virtual ~NumExpression() {}
 };
 
 class PlusExpression : public Expression {
@@ -36,4 +37,5 @@ class PlusExpression : public Expression {
     std::string s(ss.str());
     return s;
   }
+  virtual ~PlusExpression() {}
 };

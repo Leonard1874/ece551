@@ -1,0 +1,211 @@
+Grading at 10/23/2019:16:04:09.834046
+For commit ID bffd81a62056db4041b2207e396867809e555277
+Grading at Wed Oct 23 12:04:07 EDT 2019
+Compiling code
+The code compiled.
+---------------------
+Test case 1
+  - Valgrind reported errors
+Valgrind reported errors (test failed).
+==83346== Memcheck, a memory error detector
+==83346== Copyright (C) 2002-2017, and GNU GPL'd, by Julian Seward et al.
+==83346== Using Valgrind-3.13.0 and LibVEX; rerun with -h for copyright info
+==83346== Command: ./expr
+==83346== Parent PID: 83345
+==83346== 
+==83346== 
+==83346== HEAP SUMMARY:
+==83346==     in use at exit: 416 bytes in 22 blocks
+==83346==   total heap usage: 36 allocs, 14 frees, 83,152 bytes allocated
+==83346== 
+==83346== 16 bytes in 1 blocks are definitely lost in loss record 8 of 18
+==83346==    at 0x4C3017F: operator new(unsigned long) (in /usr/lib/valgrind/vgpreload_memcheck-amd64-linux.so)
+==83346==    by 0x109631: parse(char const**) (in /home/ece551db/graderbase/work/ww165.083_expr_eval1.6zPdMI/expr)
+==83346==    by 0x10943A: parseOp(char const**) (in /home/ece551db/graderbase/work/ww165.083_expr_eval1.6zPdMI/expr)
+==83346==    by 0x1095AA: parse(char const**) (in /home/ece551db/graderbase/work/ww165.083_expr_eval1.6zPdMI/expr)
+==83346==    by 0x1096E3: main (in /home/ece551db/graderbase/work/ww165.083_expr_eval1.6zPdMI/expr)
+==83346== 
+==83346== 32 bytes in 2 blocks are definitely lost in loss record 16 of 18
+==83346==    at 0x4C3017F: operator new(unsigned long) (in /usr/lib/valgrind/vgpreload_memcheck-amd64-linux.so)
+==83346==    by 0x109631: parse(char const**) (in /home/ece551db/graderbase/work/ww165.083_expr_eval1.6zPdMI/expr)
+==83346==    by 0x109419: parseOp(char const**) (in /home/ece551db/graderbase/work/ww165.083_expr_eval1.6zPdMI/expr)
+==83346==    by 0x1095AA: parse(char const**) (in /home/ece551db/graderbase/work/ww165.083_expr_eval1.6zPdMI/expr)
+==83346==    by 0x1096E3: main (in /home/ece551db/graderbase/work/ww165.083_expr_eval1.6zPdMI/expr)
+==83346== 
+==83346== 112 (48 direct, 64 indirect) bytes in 2 blocks are definitely lost in loss record 17 of 18
+==83346==    at 0x4C3017F: operator new(unsigned long) (in /usr/lib/valgrind/vgpreload_memcheck-amd64-linux.so)
+==83346==    by 0x1092E5: makeExpr(char, Expression*, Expression*) (in /home/ece551db/graderbase/work/ww165.083_expr_eval1.6zPdMI/expr)
+==83346==    by 0x1094AF: parseOp(char const**) (in /home/ece551db/graderbase/work/ww165.083_expr_eval1.6zPdMI/expr)
+==83346==    by 0x1095AA: parse(char const**) (in /home/ece551db/graderbase/work/ww165.083_expr_eval1.6zPdMI/expr)
+==83346==    by 0x10943A: parseOp(char const**) (in /home/ece551db/graderbase/work/ww165.083_expr_eval1.6zPdMI/expr)
+==83346==    by 0x1095AA: parse(char const**) (in /home/ece551db/graderbase/work/ww165.083_expr_eval1.6zPdMI/expr)
+==83346==    by 0x1096E3: main (in /home/ece551db/graderbase/work/ww165.083_expr_eval1.6zPdMI/expr)
+==83346== 
+==83346== 256 (24 direct, 232 indirect) bytes in 1 blocks are definitely lost in loss record 18 of 18
+==83346==    at 0x4C3017F: operator new(unsigned long) (in /usr/lib/valgrind/vgpreload_memcheck-amd64-linux.so)
+==83346==    by 0x1092E5: makeExpr(char, Expression*, Expression*) (in /home/ece551db/graderbase/work/ww165.083_expr_eval1.6zPdMI/expr)
+==83346==    by 0x1094AF: parseOp(char const**) (in /home/ece551db/graderbase/work/ww165.083_expr_eval1.6zPdMI/expr)
+==83346==    by 0x1095AA: parse(char const**) (in /home/ece551db/graderbase/work/ww165.083_expr_eval1.6zPdMI/expr)
+==83346==    by 0x109419: parseOp(char const**) (in /home/ece551db/graderbase/work/ww165.083_expr_eval1.6zPdMI/expr)
+==83346==    by 0x1095AA: parse(char const**) (in /home/ece551db/graderbase/work/ww165.083_expr_eval1.6zPdMI/expr)
+==83346==    by 0x1096E3: main (in /home/ece551db/graderbase/work/ww165.083_expr_eval1.6zPdMI/expr)
+==83346== 
+==83346== LEAK SUMMARY:
+==83346==    definitely lost: 120 bytes in 6 blocks
+==83346==    indirectly lost: 296 bytes in 16 blocks
+==83346==      possibly lost: 0 bytes in 0 blocks
+==83346==    still reachable: 0 bytes in 0 blocks
+==83346==         suppressed: 0 bytes in 0 blocks
+==83346== 
+==83346== For counts of detected and suppressed errors, rerun with: -v
+==83346== ERROR SUMMARY: 4 errors from 4 contexts (suppressed: 0 from 0)
+---------------------
+Test case 2
+  - Valgrind reported errors
+Valgrind reported errors (test failed).
+==83350== Memcheck, a memory error detector
+==83350== Copyright (C) 2002-2017, and GNU GPL'd, by Julian Seward et al.
+==83350== Using Valgrind-3.13.0 and LibVEX; rerun with -h for copyright info
+==83350== Command: ./expr
+==83350== Parent PID: 83349
+==83350== 
+==83350== 
+==83350== HEAP SUMMARY:
+==83350==     in use at exit: 704 bytes in 38 blocks
+==83350==   total heap usage: 64 allocs, 26 frees, 85,200 bytes allocated
+==83350== 
+==83350== 16 bytes in 1 blocks are definitely lost in loss record 7 of 22
+==83350==    at 0x4C3017F: operator new(unsigned long) (in /usr/lib/valgrind/vgpreload_memcheck-amd64-linux.so)
+==83350==    by 0x109631: parse(char const**) (in /home/ece551db/graderbase/work/ww165.083_expr_eval1.6zPdMI/expr)
+==83350==    by 0x109419: parseOp(char const**) (in /home/ece551db/graderbase/work/ww165.083_expr_eval1.6zPdMI/expr)
+==83350==    by 0x1095AA: parse(char const**) (in /home/ece551db/graderbase/work/ww165.083_expr_eval1.6zPdMI/expr)
+==83350==    by 0x10943A: parseOp(char const**) (in /home/ece551db/graderbase/work/ww165.083_expr_eval1.6zPdMI/expr)
+==83350==    by 0x1095AA: parse(char const**) (in /home/ece551db/graderbase/work/ww165.083_expr_eval1.6zPdMI/expr)
+==83350==    by 0x1096E3: main (in /home/ece551db/graderbase/work/ww165.083_expr_eval1.6zPdMI/expr)
+==83350== 
+==83350== 16 bytes in 1 blocks are definitely lost in loss record 8 of 22
+==83350==    at 0x4C3017F: operator new(unsigned long) (in /usr/lib/valgrind/vgpreload_memcheck-amd64-linux.so)
+==83350==    by 0x109631: parse(char const**) (in /home/ece551db/graderbase/work/ww165.083_expr_eval1.6zPdMI/expr)
+==83350==    by 0x10943A: parseOp(char const**) (in /home/ece551db/graderbase/work/ww165.083_expr_eval1.6zPdMI/expr)
+==83350==    by 0x1095AA: parse(char const**) (in /home/ece551db/graderbase/work/ww165.083_expr_eval1.6zPdMI/expr)
+==83350==    by 0x10943A: parseOp(char const**) (in /home/ece551db/graderbase/work/ww165.083_expr_eval1.6zPdMI/expr)
+==83350==    by 0x1095AA: parse(char const**) (in /home/ece551db/graderbase/work/ww165.083_expr_eval1.6zPdMI/expr)
+==83350==    by 0x1096E3: main (in /home/ece551db/graderbase/work/ww165.083_expr_eval1.6zPdMI/expr)
+==83350== 
+==83350== 64 bytes in 4 blocks are definitely lost in loss record 19 of 22
+==83350==    at 0x4C3017F: operator new(unsigned long) (in /usr/lib/valgrind/vgpreload_memcheck-amd64-linux.so)
+==83350==    by 0x109631: parse(char const**) (in /home/ece551db/graderbase/work/ww165.083_expr_eval1.6zPdMI/expr)
+==83350==    by 0x109419: parseOp(char const**) (in /home/ece551db/graderbase/work/ww165.083_expr_eval1.6zPdMI/expr)
+==83350==    by 0x1095AA: parse(char const**) (in /home/ece551db/graderbase/work/ww165.083_expr_eval1.6zPdMI/expr)
+==83350==    by 0x1096E3: main (in /home/ece551db/graderbase/work/ww165.083_expr_eval1.6zPdMI/expr)
+==83350== 
+==83350== 64 bytes in 4 blocks are definitely lost in loss record 20 of 22
+==83350==    at 0x4C3017F: operator new(unsigned long) (in /usr/lib/valgrind/vgpreload_memcheck-amd64-linux.so)
+==83350==    by 0x109631: parse(char const**) (in /home/ece551db/graderbase/work/ww165.083_expr_eval1.6zPdMI/expr)
+==83350==    by 0x10943A: parseOp(char const**) (in /home/ece551db/graderbase/work/ww165.083_expr_eval1.6zPdMI/expr)
+==83350==    by 0x1095AA: parse(char const**) (in /home/ece551db/graderbase/work/ww165.083_expr_eval1.6zPdMI/expr)
+==83350==    by 0x1096E3: main (in /home/ece551db/graderbase/work/ww165.083_expr_eval1.6zPdMI/expr)
+==83350== 
+==83350== 112 (48 direct, 64 indirect) bytes in 2 blocks are definitely lost in loss record 21 of 22
+==83350==    at 0x4C3017F: operator new(unsigned long) (in /usr/lib/valgrind/vgpreload_memcheck-amd64-linux.so)
+==83350==    by 0x1092E5: makeExpr(char, Expression*, Expression*) (in /home/ece551db/graderbase/work/ww165.083_expr_eval1.6zPdMI/expr)
+==83350==    by 0x1094AF: parseOp(char const**) (in /home/ece551db/graderbase/work/ww165.083_expr_eval1.6zPdMI/expr)
+==83350==    by 0x1095AA: parse(char const**) (in /home/ece551db/graderbase/work/ww165.083_expr_eval1.6zPdMI/expr)
+==83350==    by 0x10943A: parseOp(char const**) (in /home/ece551db/graderbase/work/ww165.083_expr_eval1.6zPdMI/expr)
+==83350==    by 0x1095AA: parse(char const**) (in /home/ece551db/graderbase/work/ww165.083_expr_eval1.6zPdMI/expr)
+==83350==    by 0x1096E3: main (in /home/ece551db/graderbase/work/ww165.083_expr_eval1.6zPdMI/expr)
+==83350== 
+==83350== 432 (48 direct, 384 indirect) bytes in 2 blocks are definitely lost in loss record 22 of 22
+==83350==    at 0x4C3017F: operator new(unsigned long) (in /usr/lib/valgrind/vgpreload_memcheck-amd64-linux.so)
+==83350==    by 0x1092E5: makeExpr(char, Expression*, Expression*) (in /home/ece551db/graderbase/work/ww165.083_expr_eval1.6zPdMI/expr)
+==83350==    by 0x1094AF: parseOp(char const**) (in /home/ece551db/graderbase/work/ww165.083_expr_eval1.6zPdMI/expr)
+==83350==    by 0x1095AA: parse(char const**) (in /home/ece551db/graderbase/work/ww165.083_expr_eval1.6zPdMI/expr)
+==83350==    by 0x109419: parseOp(char const**) (in /home/ece551db/graderbase/work/ww165.083_expr_eval1.6zPdMI/expr)
+==83350==    by 0x1095AA: parse(char const**) (in /home/ece551db/graderbase/work/ww165.083_expr_eval1.6zPdMI/expr)
+==83350==    by 0x1096E3: main (in /home/ece551db/graderbase/work/ww165.083_expr_eval1.6zPdMI/expr)
+==83350== 
+==83350== LEAK SUMMARY:
+==83350==    definitely lost: 256 bytes in 14 blocks
+==83350==    indirectly lost: 448 bytes in 24 blocks
+==83350==      possibly lost: 0 bytes in 0 blocks
+==83350==    still reachable: 0 bytes in 0 blocks
+==83350==         suppressed: 0 bytes in 0 blocks
+==83350== 
+==83350== For counts of detected and suppressed errors, rerun with: -v
+==83350== ERROR SUMMARY: 6 errors from 6 contexts (suppressed: 0 from 0)
+---------------------
+Test case 3
+  - Valgrind reported errors
+Valgrind reported errors (test failed).
+==83356== Memcheck, a memory error detector
+==83356== Copyright (C) 2002-2017, and GNU GPL'd, by Julian Seward et al.
+==83356== Using Valgrind-3.13.0 and LibVEX; rerun with -h for copyright info
+==83356== Command: ./expr
+==83356== Parent PID: 83355
+==83356== 
+==83356== 
+==83356== HEAP SUMMARY:
+==83356==     in use at exit: 1,056 bytes in 56 blocks
+==83356==   total heap usage: 85 allocs, 29 frees, 86,120 bytes allocated
+==83356== 
+==83356== 16 bytes in 1 blocks are definitely lost in loss record 7 of 27
+==83356==    at 0x4C3017F: operator new(unsigned long) (in /usr/lib/valgrind/vgpreload_memcheck-amd64-linux.so)
+==83356==    by 0x109631: parse(char const**) (in /home/ece551db/graderbase/work/ww165.083_expr_eval1.6zPdMI/expr)
+==83356==    by 0x109419: parseOp(char const**) (in /home/ece551db/graderbase/work/ww165.083_expr_eval1.6zPdMI/expr)
+==83356==    by 0x1095AA: parse(char const**) (in /home/ece551db/graderbase/work/ww165.083_expr_eval1.6zPdMI/expr)
+==83356==    by 0x10943A: parseOp(char const**) (in /home/ece551db/graderbase/work/ww165.083_expr_eval1.6zPdMI/expr)
+==83356==    by 0x1095AA: parse(char const**) (in /home/ece551db/graderbase/work/ww165.083_expr_eval1.6zPdMI/expr)
+==83356==    by 0x1096E3: main (in /home/ece551db/graderbase/work/ww165.083_expr_eval1.6zPdMI/expr)
+==83356== 
+==83356== 16 bytes in 1 blocks are definitely lost in loss record 8 of 27
+==83356==    at 0x4C3017F: operator new(unsigned long) (in /usr/lib/valgrind/vgpreload_memcheck-amd64-linux.so)
+==83356==    by 0x109631: parse(char const**) (in /home/ece551db/graderbase/work/ww165.083_expr_eval1.6zPdMI/expr)
+==83356==    by 0x10943A: parseOp(char const**) (in /home/ece551db/graderbase/work/ww165.083_expr_eval1.6zPdMI/expr)
+==83356==    by 0x1095AA: parse(char const**) (in /home/ece551db/graderbase/work/ww165.083_expr_eval1.6zPdMI/expr)
+==83356==    by 0x10943A: parseOp(char const**) (in /home/ece551db/graderbase/work/ww165.083_expr_eval1.6zPdMI/expr)
+==83356==    by 0x1095AA: parse(char const**) (in /home/ece551db/graderbase/work/ww165.083_expr_eval1.6zPdMI/expr)
+==83356==    by 0x1096E3: main (in /home/ece551db/graderbase/work/ww165.083_expr_eval1.6zPdMI/expr)
+==83356== 
+==83356== 64 bytes in 4 blocks are definitely lost in loss record 21 of 27
+==83356==    at 0x4C3017F: operator new(unsigned long) (in /usr/lib/valgrind/vgpreload_memcheck-amd64-linux.so)
+==83356==    by 0x109631: parse(char const**) (in /home/ece551db/graderbase/work/ww165.083_expr_eval1.6zPdMI/expr)
+==83356==    by 0x109419: parseOp(char const**) (in /home/ece551db/graderbase/work/ww165.083_expr_eval1.6zPdMI/expr)
+==83356==    by 0x1095AA: parse(char const**) (in /home/ece551db/graderbase/work/ww165.083_expr_eval1.6zPdMI/expr)
+==83356==    by 0x1096E3: main (in /home/ece551db/graderbase/work/ww165.083_expr_eval1.6zPdMI/expr)
+==83356== 
+==83356== 80 bytes in 5 blocks are definitely lost in loss record 25 of 27
+==83356==    at 0x4C3017F: operator new(unsigned long) (in /usr/lib/valgrind/vgpreload_memcheck-amd64-linux.so)
+==83356==    by 0x109631: parse(char const**) (in /home/ece551db/graderbase/work/ww165.083_expr_eval1.6zPdMI/expr)
+==83356==    by 0x10943A: parseOp(char const**) (in /home/ece551db/graderbase/work/ww165.083_expr_eval1.6zPdMI/expr)
+==83356==    by 0x1095AA: parse(char const**) (in /home/ece551db/graderbase/work/ww165.083_expr_eval1.6zPdMI/expr)
+==83356==    by 0x1096E3: main (in /home/ece551db/graderbase/work/ww165.083_expr_eval1.6zPdMI/expr)
+==83356== 
+==83356== 112 (48 direct, 64 indirect) bytes in 2 blocks are definitely lost in loss record 26 of 27
+==83356==    at 0x4C3017F: operator new(unsigned long) (in /usr/lib/valgrind/vgpreload_memcheck-amd64-linux.so)
+==83356==    by 0x1092E5: makeExpr(char, Expression*, Expression*) (in /home/ece551db/graderbase/work/ww165.083_expr_eval1.6zPdMI/expr)
+==83356==    by 0x1094AF: parseOp(char const**) (in /home/ece551db/graderbase/work/ww165.083_expr_eval1.6zPdMI/expr)
+==83356==    by 0x1095AA: parse(char const**) (in /home/ece551db/graderbase/work/ww165.083_expr_eval1.6zPdMI/expr)
+==83356==    by 0x10943A: parseOp(char const**) (in /home/ece551db/graderbase/work/ww165.083_expr_eval1.6zPdMI/expr)
+==83356==    by 0x1095AA: parse(char const**) (in /home/ece551db/graderbase/work/ww165.083_expr_eval1.6zPdMI/expr)
+==83356==    by 0x1096E3: main (in /home/ece551db/graderbase/work/ww165.083_expr_eval1.6zPdMI/expr)
+==83356== 
+==83356== 768 (72 direct, 696 indirect) bytes in 3 blocks are definitely lost in loss record 27 of 27
+==83356==    at 0x4C3017F: operator new(unsigned long) (in /usr/lib/valgrind/vgpreload_memcheck-amd64-linux.so)
+==83356==    by 0x1092E5: makeExpr(char, Expression*, Expression*) (in /home/ece551db/graderbase/work/ww165.083_expr_eval1.6zPdMI/expr)
+==83356==    by 0x1094AF: parseOp(char const**) (in /home/ece551db/graderbase/work/ww165.083_expr_eval1.6zPdMI/expr)
+==83356==    by 0x1095AA: parse(char const**) (in /home/ece551db/graderbase/work/ww165.083_expr_eval1.6zPdMI/expr)
+==83356==    by 0x109419: parseOp(char const**) (in /home/ece551db/graderbase/work/ww165.083_expr_eval1.6zPdMI/expr)
+==83356==    by 0x1095AA: parse(char const**) (in /home/ece551db/graderbase/work/ww165.083_expr_eval1.6zPdMI/expr)
+==83356==    by 0x1096E3: main (in /home/ece551db/graderbase/work/ww165.083_expr_eval1.6zPdMI/expr)
+==83356== 
+==83356== LEAK SUMMARY:
+==83356==    definitely lost: 296 bytes in 16 blocks
+==83356==    indirectly lost: 760 bytes in 40 blocks
+==83356==      possibly lost: 0 bytes in 0 blocks
+==83356==    still reachable: 0 bytes in 0 blocks
+==83356==         suppressed: 0 bytes in 0 blocks
+==83356== 
+==83356== For counts of detected and suppressed errors, rerun with: -v
+==83356== ERROR SUMMARY: 6 errors from 6 contexts (suppressed: 0 from 0)
+
+Overall Grade: F

@@ -66,6 +66,7 @@ template<typename T>
 LinkedList<Counted_OrdCount<T> > convertTypes(LinkedList<Counted_OrdItem<T> > ll) {
   LinkedList<Counted_OrdCount<T> > ans;
   while (ll.getSize() != 0) {
+    // std::cout << ll.getSize() << "\n";
     Counted_OrdItem<T> & curr = ll[0];
     ans.addFront(Counted_OrdCount<T>(curr));
     ll.remove(curr);
@@ -124,6 +125,7 @@ int main(int argc, char ** argv) {
     return EXIT_FAILURE;
   }
   LinkedList<Counted_OrdItem<std::string> > counts = count(*items);
+
   int sz = toRemove->getSize();
   while (sz > 0) {
     std::string s = (*toRemove)[sz - 1];

@@ -47,6 +47,114 @@ class LinkedList {
     }
     size++;
   }
+  int find(const T & item) const {
+    Node * current = head;
+    for (int i = 0; i < size; i++) {
+      if (current->data == item) {
+        return i;
+      }
+      current = current->next;
+    }
+    return -1;
+  }
+
+  Node * remove(const T & data, Node * current) {
+    if (current == NULL) {
+      return NULL;
+    }
+    if (data == current->data) {
+      Node * ans = current->next;
+      delete current;
+      return ans;
+    }
+    current->next = remove(data, current->next);
+    return current;
+  }
+
+  bool remove(const T & item) {
+    if (find(item) == -1) {
+      return false;
+    }
+    else {
+      head = remove(item, head);
+      size--;
+      return true;
+    }
+  }
+
+  T & operator[](int index) {
+    assert(index >= 0 && index <= size - 1 && head != NULL);
+    Node * current = head;
+    for (int i = 0; i < index; i++) {
+      current = current->next;
+    }
+    return current->data;
+  }
+
+  const T & operator[](int index) const {
+    assert(index >= 0 && index <= size - 1 && head != NULL);
+    Node * current = head;
+    for (int i = 0; i < index; i++) {
+      current = current->next;
+    }
+    return current->data;
+  }
+
+  int getSize() const { return size; }
+
+  LinkedList() : head(NULL), tail(NULL), size(0) {}
+
+  LinkedList(const LinkedList & rhs) : head(NULL), tail(NULL), size(rhs.getSize()) {
+    for (int i = 0; i < size; i++) {
+      tail = new Node(rhs[i], NULL, tail);
+      if (head == NULL) {
+        head = tail;
+      }
+      else {
+        tail->previous->next = tail;
+      }
+    }
+  }
+
+  LinkedList & operator=(const LinkedList & rhs) {
+    if (this != &rhs) {
+      Node * temphead = NULL;
+      Node * temptail = NULL;
+
+      for (int i = 0; i < rhs.getSize(); i++) {
+        temphead = new Node(rhs[i], temphead);
+        if (temptail == NULL) {
+          temptail = temphead;
+        }
+        else {
+          temphead->next->previous = temphead;
+        }
+      }
+
+      while (head != NULL) {
+        Node * temp = head->next;
+        delete head;
+        head = temp;
+      }
+      tail = NULL;
+      head = temphead;
+      tail = temptail;
+      size = rhs.getSize();
+    }
+    return *this;
+  }
+
+  ~LinkedList() {
+    while (head != NULL) {
+      Node * temp = head->next;
+      delete head;
+      head = temp;
+    }
+  }
+};
+
+#endif
+/*
   bool remove(const T & item) {
     if (head == NULL) {
       return false;
@@ -90,7 +198,8 @@ class LinkedList {
     }
     return false;
   }
-  /*
+  */
+/*
   bool remove(const T & item) {
     Node ** current = &head;
     bool res = false;
@@ -116,98 +225,3 @@ class LinkedList {
     return res;
   }
   */
-  /*
-  Node * remove(const T & data, Node * current) {
-    if (current == NULL) {
-      return NULL;
-    }
-    if (data == current->data) {
-      Node * ans = current->next;
-      delete current;
-      return ans;
-    }
-    current->next = remove(data, current->next);
-    return current;
-  }
-
-  bool remove(const T & item) {
-    head = remove(item, head);
-  }
-  */
-  T & operator[](int index) {
-    assert(index >= 0 && index <= size - 1);
-    Node * current = head;
-    for (int i = 0; i < index; i++) {
-      current = current->next;
-    }
-    return current->data;
-  }
-
-  const T & operator[](int index) const {
-    assert(index >= 0 && index <= size - 1);
-    Node * current = head;
-    for (int i = 0; i < index; i++) {
-      current = current->next;
-    }
-    return current->data;
-  }
-
-  int find(const T & item) const {
-    Node * current = head;
-    for (int i = 0; i < size; i++) {
-      if (current->data == item) {
-        return i;
-      }
-      current = current->next;
-    }
-    return -1;
-  }
-
-  int getSize() const { return size; }
-
-  LinkedList() : head(NULL), tail(NULL), size(0) {}
-
-  LinkedList(const LinkedList & rhs) : head(NULL), tail(NULL), size(rhs.getSize()) {
-    for (int i = 0; i < rhs.getSize(); i++) {
-      addBack(rhs[i]);
-    }
-  }
-
-  LinkedList & operator=(const LinkedList & rhs) {
-    if (this != &rhs) {
-      Node * temphead = NULL;
-      Node * temptail = NULL;
-
-      for (int i = 0; i < rhs.getSize(); i++) {
-        temphead = new Node(rhs[i], temphead);
-        if (temptail == NULL) {
-          temptail = temphead;
-        }
-        else {
-          temphead->next->previous = temphead;
-        }
-      }
-
-      while (head != NULL) {
-        Node * temp = head->next;
-        delete head;
-        head = temp;
-      }
-      tail = NULL;
-      head = temphead;
-      tail = temptail;
-      size = rhs.getSize();
-    }
-    return *this;
-  }
-
-  ~LinkedList() {
-    while (head != NULL) {
-      Node * temp = head->next;
-      delete head;
-      head = temp;
-    }
-  }
-};
-
-#endif

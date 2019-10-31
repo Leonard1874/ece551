@@ -174,7 +174,7 @@ class LinkedList {
   }
 
   LinkedList & operator=(const LinkedList & rhs) {
-    if (*this != &rhs) {
+    if (this != &rhs) {
       Node * temphead = NULL;
       Node * temptail = NULL;
 

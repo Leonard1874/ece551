@@ -1,35 +1,38 @@
-Grading at 10/31/2019:15:07:26.760187
-For commit ID 16cb1a05ea6147340bf91c35b79d6fd805502d18
-Grading at Thu Oct 31 11:07:26 EDT 2019
+Grading at 10/31/2019:15:17:20.051417
+For commit ID dc9bfac0108a56755d51d35c9cb980faf462a7fb
+Grading at Thu Oct 31 11:17:16 EDT 2019
 -----------------------------------------------
 testcase 1 : Testing with LinkedList<int>
 ...compiling...
-In file included from tester.cpp:1:0:
-ll.h: In instantiation of ‘LinkedList<T>& LinkedList<T>::operator=(const LinkedList<T>&) [with T = int]’:
-tester.cpp:94:11:   required from here
-ll.h:123:12: error: lvalue required as left operand of assignment
-       this = &temp;
-       ~~~~~^~~~~~~
-The code did not compile.  This test failed.
+The code compiled.
+  - Valgrind was clean (no errors, no memory leaks)
+Line_189_did_not_match
+Line_190_did_not_match
+Line_249_did_not_match
+Line_250_did_not_match
+Your file did not match the expected ouput
+Testcase failed 
 -----------------------------------------------
 testcase 2 : Testing with LinkedList<std::string>
 ...compiling...
-In file included from tester.cpp:1:0:
-ll.h: In instantiation of ‘LinkedList<T>& LinkedList<T>::operator=(const LinkedList<T>&) [with T = std::__cxx11::basic_string<char>]’:
-tester.cpp:94:11:   required from here
-ll.h:123:12: error: lvalue required as left operand of assignment
-       this = &temp;
-       ~~~~~^~~~~~~
-The code did not compile.  This test failed.
+The code compiled.
+  - Valgrind was clean (no errors, no memory leaks)
+Line_189_did_not_match
+Line_190_did_not_match
+Line_249_did_not_match
+Line_250_did_not_match
+Your file did not match the expected ouput
+Testcase failed 
 -----------------------------------------------
 testcase 3 : Testing with LinkedList<(a custom class we wrote)>
 ...compiling...
-In file included from tester.cpp:1:0:
-ll.h: In instantiation of ‘LinkedList<T>& LinkedList<T>::operator=(const LinkedList<T>&) [with T = Tester]’:
-tester.cpp:94:11:   required from here
-ll.h:123:12: error: lvalue required as left operand of assignment
-       this = &temp;
-       ~~~~~^~~~~~~
-The code did not compile.  This test failed.
+The code compiled.
+  - Valgrind was clean (no errors, no memory leaks)
+Line_189_did_not_match
+Line_190_did_not_match
+Line_249_did_not_match
+Line_250_did_not_match
+Your file did not match the expected ouput
+Testcase failed 
 
 Overall Grade: F

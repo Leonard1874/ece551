@@ -124,7 +124,6 @@ int main(int argc, char ** argv) {
     return EXIT_FAILURE;
   }
   LinkedList<Counted_OrdItem<std::string> > counts = count(*items);
-
   int sz = toRemove->getSize();
   while (sz > 0) {
     std::string s = (*toRemove)[sz - 1];
@@ -138,10 +137,8 @@ int main(int argc, char ** argv) {
       sz--;
     }
   }
-
   LinkedList<Counted_OrdCount<std::string> > converted = convertTypes(counts);
   sort(converted);
-
   for (int i = 0; i < converted.getSize(); i++) {
     std::cout << converted[i].count << ": " << converted[i].item << "\n";
   }

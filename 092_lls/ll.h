@@ -120,7 +120,7 @@ class LinkedList {
     if (this != &rhs) {
       LinkedList temp(rhs);
       delete this;
-      this = temp;
+      this = &temp;
     }
     return *this;
   }

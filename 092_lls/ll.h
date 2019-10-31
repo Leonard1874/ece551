@@ -118,9 +118,28 @@ class LinkedList {
 
   LinkedList & operator=(const LinkedList & rhs) {
     if (this != &rhs) {
-      LinkedList temp(rhs);
-      delete this;
-      this = &temp;
+      Node * temphead = NULL;
+      Node * temptail = NULL;
+
+      for (int i = 0; i < rhs.getSize(); i++) {
+        temphead = new Node(rhs[i], temphead);
+        if (temptail == NULL) {
+          temptail = temphead;
+        }
+        else {
+          temphead->next->previous = temphead;
+        }
+      }
+
+      while (head != NULL) {
+        Node * temp = head->next;
+        delete head;
+        head = temp;
+      }
+      tail = NULL;
+      head = temphead;
+      tail = temptail;
+      size = rhs.getSize();
     }
     return *this;
   }

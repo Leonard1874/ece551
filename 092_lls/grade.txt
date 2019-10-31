@@ -1,15 +1,15 @@
-Grading at 10/31/2019:03:12:46.926623
-For commit ID e26a7af3497cfb26d9754d30eb99c71b9c1937ae
-Grading at Wed Oct 30 23:12:46 EDT 2019
+Grading at 10/31/2019:03:16:07.592805
+For commit ID cdec88a2f9934bd1e9cedb50f9424c64f117f3b6
+Grading at Wed Oct 30 23:16:07 EDT 2019
 -----------------------------------------------
 testcase 1 : Testing with LinkedList<int>
 ...compiling...
 In file included from tester.cpp:1:0:
 ll.h: In instantiation of ‘LinkedList<T>& LinkedList<T>::operator=(const LinkedList<T>&) [with T = int]’:
 tester.cpp:94:11:   required from here
-ll.h:177:15: error: no match for ‘operator!=’ (operand types are ‘LinkedList<int>’ and ‘const LinkedList<int>’)
-     if (*this != rhs) {
-         ~~~~~~^~~~~~
+ll.h:177:15: error: no match for ‘operator!=’ (operand types are ‘LinkedList<int>’ and ‘const LinkedList<int>*’)
+     if (*this != &rhs) {
+         ~~~~~~^~~~~~~
 The code did not compile.  This test failed.
 -----------------------------------------------
 testcase 2 : Testing with LinkedList<std::string>
@@ -17,9 +17,9 @@ testcase 2 : Testing with LinkedList<std::string>
 In file included from tester.cpp:1:0:
 ll.h: In instantiation of ‘LinkedList<T>& LinkedList<T>::operator=(const LinkedList<T>&) [with T = std::__cxx11::basic_string<char>]’:
 tester.cpp:94:11:   required from here
-ll.h:177:15: error: no match for ‘operator!=’ (operand types are ‘LinkedList<std::__cxx11::basic_string<char> >’ and ‘const LinkedList<std::__cxx11::basic_string<char> >’)
-     if (*this != rhs) {
-         ~~~~~~^~~~~~
+ll.h:177:15: error: no match for ‘operator!=’ (operand types are ‘LinkedList<std::__cxx11::basic_string<char> >’ and ‘const LinkedList<std::__cxx11::basic_string<char> >*’)
+     if (*this != &rhs) {
+         ~~~~~~^~~~~~~
 In file included from /usr/include/c++/7/bits/locale_facets.h:48:0,
                  from /usr/include/c++/7/bits/basic_ios.h:37,
                  from /usr/include/c++/7/ios:44,
@@ -33,8 +33,8 @@ In file included from /usr/include/c++/7/bits/locale_facets.h:48:0,
 /usr/include/c++/7/bits/streambuf_iterator.h:210:5: note:   template argument deduction/substitution failed:
 In file included from tester.cpp:1:0:
 ll.h:177:15: note:   ‘LinkedList<std::__cxx11::basic_string<char> >’ is not derived from ‘const std::istreambuf_iterator<_CharT, _Traits>’
-     if (*this != rhs) {
-         ~~~~~~^~~~~~
+     if (*this != &rhs) {
+         ~~~~~~^~~~~~~
 In file included from /usr/include/c++/7/string:52:0,
                  from /usr/include/c++/7/bits/locale_classes.h:40,
                  from /usr/include/c++/7/bits/ios_base.h:41,
@@ -49,8 +49,8 @@ In file included from /usr/include/c++/7/string:52:0,
 /usr/include/c++/7/bits/basic_string.h:6081:5: note:   template argument deduction/substitution failed:
 In file included from tester.cpp:1:0:
 ll.h:177:15: note:   ‘LinkedList<std::__cxx11::basic_string<char> >’ is not derived from ‘const std::__cxx11::basic_string<_CharT, _Traits, _Alloc>’
-     if (*this != rhs) {
-         ~~~~~~^~~~~~
+     if (*this != &rhs) {
+         ~~~~~~^~~~~~~
 In file included from /usr/include/c++/7/string:52:0,
                  from /usr/include/c++/7/bits/locale_classes.h:40,
                  from /usr/include/c++/7/bits/ios_base.h:41,
@@ -65,8 +65,8 @@ In file included from /usr/include/c++/7/string:52:0,
 /usr/include/c++/7/bits/basic_string.h:6069:5: note:   template argument deduction/substitution failed:
 In file included from tester.cpp:1:0:
 ll.h:177:15: note:   mismatched types ‘const _CharT*’ and ‘LinkedList<std::__cxx11::basic_string<char> >’
-     if (*this != rhs) {
-         ~~~~~~^~~~~~
+     if (*this != &rhs) {
+         ~~~~~~^~~~~~~
 In file included from /usr/include/c++/7/string:52:0,
                  from /usr/include/c++/7/bits/locale_classes.h:40,
                  from /usr/include/c++/7/bits/ios_base.h:41,
@@ -81,8 +81,8 @@ In file included from /usr/include/c++/7/string:52:0,
 /usr/include/c++/7/bits/basic_string.h:6056:5: note:   template argument deduction/substitution failed:
 In file included from tester.cpp:1:0:
 ll.h:177:15: note:   ‘LinkedList<std::__cxx11::basic_string<char> >’ is not derived from ‘const std::__cxx11::basic_string<_CharT, _Traits, _Alloc>’
-     if (*this != rhs) {
-         ~~~~~~^~~~~~
+     if (*this != &rhs) {
+         ~~~~~~^~~~~~~
 In file included from /usr/include/c++/7/string:41:0,
                  from /usr/include/c++/7/bits/locale_classes.h:40,
                  from /usr/include/c++/7/bits/ios_base.h:41,
@@ -97,8 +97,8 @@ In file included from /usr/include/c++/7/string:41:0,
 /usr/include/c++/7/bits/allocator.h:164:5: note:   template argument deduction/substitution failed:
 In file included from tester.cpp:1:0:
 ll.h:177:15: note:   ‘LinkedList<std::__cxx11::basic_string<char> >’ is not derived from ‘const std::allocator<_CharT>’
-     if (*this != rhs) {
-         ~~~~~~^~~~~~
+     if (*this != &rhs) {
+         ~~~~~~^~~~~~~
 In file included from /usr/include/c++/7/string:41:0,
                  from /usr/include/c++/7/bits/locale_classes.h:40,
                  from /usr/include/c++/7/bits/ios_base.h:41,
@@ -113,8 +113,8 @@ In file included from /usr/include/c++/7/string:41:0,
 /usr/include/c++/7/bits/allocator.h:158:5: note:   template argument deduction/substitution failed:
 In file included from tester.cpp:1:0:
 ll.h:177:15: note:   ‘LinkedList<std::__cxx11::basic_string<char> >’ is not derived from ‘const std::allocator<_CharT>’
-     if (*this != rhs) {
-         ~~~~~~^~~~~~
+     if (*this != &rhs) {
+         ~~~~~~^~~~~~~
 In file included from /usr/include/c++/7/bits/stl_algobase.h:67:0,
                  from /usr/include/c++/7/bits/char_traits.h:39,
                  from /usr/include/c++/7/ios:40,
@@ -128,8 +128,8 @@ In file included from /usr/include/c++/7/bits/stl_algobase.h:67:0,
 /usr/include/c++/7/bits/stl_iterator.h:352:5: note:   template argument deduction/substitution failed:
 In file included from tester.cpp:1:0:
 ll.h:177:15: note:   ‘LinkedList<std::__cxx11::basic_string<char> >’ is not derived from ‘const std::reverse_iterator<_Iterator>’
-     if (*this != rhs) {
-         ~~~~~~^~~~~~
+     if (*this != &rhs) {
+         ~~~~~~^~~~~~~
 In file included from /usr/include/c++/7/bits/stl_algobase.h:67:0,
                  from /usr/include/c++/7/bits/char_traits.h:39,
                  from /usr/include/c++/7/ios:40,
@@ -143,8 +143,8 @@ In file included from /usr/include/c++/7/bits/stl_algobase.h:67:0,
 /usr/include/c++/7/bits/stl_iterator.h:314:5: note:   template argument deduction/substitution failed:
 In file included from tester.cpp:1:0:
 ll.h:177:15: note:   ‘LinkedList<std::__cxx11::basic_string<char> >’ is not derived from ‘const std::reverse_iterator<_Iterator>’
-     if (*this != rhs) {
-         ~~~~~~^~~~~~
+     if (*this != &rhs) {
+         ~~~~~~^~~~~~~
 In file included from /usr/include/c++/7/bits/stl_algobase.h:64:0,
                  from /usr/include/c++/7/bits/char_traits.h:39,
                  from /usr/include/c++/7/ios:40,
@@ -158,8 +158,8 @@ In file included from /usr/include/c++/7/bits/stl_algobase.h:64:0,
 /usr/include/c++/7/bits/stl_pair.h:461:5: note:   template argument deduction/substitution failed:
 In file included from tester.cpp:1:0:
 ll.h:177:15: note:   ‘LinkedList<std::__cxx11::basic_string<char> >’ is not derived from ‘const std::pair<_T1, _T2>’
-     if (*this != rhs) {
-         ~~~~~~^~~~~~
+     if (*this != &rhs) {
+         ~~~~~~^~~~~~~
 In file included from /usr/include/c++/7/iosfwd:40:0,
                  from /usr/include/c++/7/ios:38,
                  from /usr/include/c++/7/ostream:38,
@@ -172,8 +172,8 @@ In file included from /usr/include/c++/7/iosfwd:40:0,
 /usr/include/c++/7/bits/postypes.h:221:5: note:   template argument deduction/substitution failed:
 In file included from tester.cpp:1:0:
 ll.h:177:15: note:   ‘LinkedList<std::__cxx11::basic_string<char> >’ is not derived from ‘const std::fpos<_StateT>’
-     if (*this != rhs) {
-         ~~~~~~^~~~~~
+     if (*this != &rhs) {
+         ~~~~~~^~~~~~~
 In file included from /usr/include/x86_64-linux-gnu/c++/7/bits/c++allocator.h:33:0,
                  from /usr/include/c++/7/bits/allocator.h:46,
                  from /usr/include/c++/7/string:41,
@@ -190,8 +190,8 @@ In file included from /usr/include/x86_64-linux-gnu/c++/7/bits/c++allocator.h:33
 /usr/include/c++/7/ext/new_allocator.h:160:5: note:   template argument deduction/substitution failed:
 In file included from tester.cpp:1:0:
 ll.h:177:15: note:   ‘LinkedList<std::__cxx11::basic_string<char> >’ is not derived from ‘const __gnu_cxx::new_allocator<_Tp>’
-     if (*this != rhs) {
-         ~~~~~~^~~~~~
+     if (*this != &rhs) {
+         ~~~~~~^~~~~~~
 In file included from /usr/include/c++/7/bits/stl_algobase.h:67:0,
                  from /usr/include/c++/7/bits/char_traits.h:39,
                  from /usr/include/c++/7/ios:40,
@@ -205,8 +205,8 @@ In file included from /usr/include/c++/7/bits/stl_algobase.h:67:0,
 /usr/include/c++/7/bits/stl_iterator.h:883:5: note:   template argument deduction/substitution failed:
 In file included from tester.cpp:1:0:
 ll.h:177:15: note:   ‘LinkedList<std::__cxx11::basic_string<char> >’ is not derived from ‘const __gnu_cxx::__normal_iterator<_Iterator, _Container>’
-     if (*this != rhs) {
-         ~~~~~~^~~~~~
+     if (*this != &rhs) {
+         ~~~~~~^~~~~~~
 In file included from /usr/include/c++/7/bits/stl_algobase.h:67:0,
                  from /usr/include/c++/7/bits/char_traits.h:39,
                  from /usr/include/c++/7/ios:40,
@@ -220,8 +220,8 @@ In file included from /usr/include/c++/7/bits/stl_algobase.h:67:0,
 /usr/include/c++/7/bits/stl_iterator.h:876:5: note:   template argument deduction/substitution failed:
 In file included from tester.cpp:1:0:
 ll.h:177:15: note:   ‘LinkedList<std::__cxx11::basic_string<char> >’ is not derived from ‘const __gnu_cxx::__normal_iterator<_IteratorL, _Container>’
-     if (*this != rhs) {
-         ~~~~~~^~~~~~
+     if (*this != &rhs) {
+         ~~~~~~^~~~~~~
 The code did not compile.  This test failed.
 -----------------------------------------------
 testcase 3 : Testing with LinkedList<(a custom class we wrote)>
@@ -229,9 +229,9 @@ testcase 3 : Testing with LinkedList<(a custom class we wrote)>
 In file included from tester.cpp:1:0:
 ll.h: In instantiation of ‘LinkedList<T>& LinkedList<T>::operator=(const LinkedList<T>&) [with T = Tester]’:
 tester.cpp:94:11:   required from here
-ll.h:177:15: error: no match for ‘operator!=’ (operand types are ‘LinkedList<Tester>’ and ‘const LinkedList<Tester>’)
-     if (*this != rhs) {
-         ~~~~~~^~~~~~
+ll.h:177:15: error: no match for ‘operator!=’ (operand types are ‘LinkedList<Tester>’ and ‘const LinkedList<Tester>*’)
+     if (*this != &rhs) {
+         ~~~~~~^~~~~~~
 The code did not compile.  This test failed.
 
 Overall Grade: F

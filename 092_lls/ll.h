@@ -47,6 +47,7 @@ class LinkedList {
     }
     size++;
   }
+
   int find(const T & item) const {
     Node * current = head;
     for (int i = 0; i < size; i++) {
@@ -58,30 +59,29 @@ class LinkedList {
     return -1;
   }
 
- private:
-  Node * remove(const T & data, Node * current) {
-    if (current == NULL) {
-      return NULL;
-    }
-    if (data == current->data) {
-      Node * ans = current->next;
-      delete current;
-      return ans;
-    }
-    current->next = remove(data, current->next);
-    return current;
-  }
-
- public:
   bool remove(const T & item) {
-    if (find(item) == -1) {
-      return false;
+    Node ** current = &head;
+    bool res = false;
+    while (*current != NULL) {
+      if ((*current)->data == item) {
+        Node * temp = *current;
+        if (temp->next != NULL) {
+          *current = (*current)->next;
+          temp->next->previous = temp->previous;
+          delete temp;
+        }
+        else {
+          tail = temp->previous;
+          delete temp;
+          *current = NULL;
+        }
+        size--;
+        res = true;
+        return res;
+      }
+      current = &((*current)->next);
     }
-    else {
-      head = remove(item, head);
-      size--;
-      return true;
-    }
+    return res;
   }
 
   T & operator[](int index) {
@@ -202,30 +202,32 @@ class LinkedList {
   }
   */
 /*
-  bool remove(const T & item) {
-    Node ** current = &head;
-    bool res = false;
-    while (*current != NULL) {
-      if ((*current)->data == item) {
-        Node * temp = *current;
-        if (temp->next != NULL) {
-          *current = (*current)->next;
-          temp->next->previous = temp->previous;
-          delete temp;
-        }
-        else {
-          tail = temp->previous;
-          delete temp;
-          *current = NULL;
-        }
-        size--;
-        res = true;
-        return res;
-      }
-      current = &((*current)->next);
+ private:
+  Node * remove(const T & data, Node * current) {
+    if (current == NULL) {
+      return NULL;
     }
-    return res;
+    if (data == current->data) {
+      Node * ans = current->next;
+      delete current;
+      return ans;
+    }
+    current->next = remove(data, current->next);
+    return current;
   }
+
+ public:
+  bool remove(const T & item) {
+    if (find(item) == -1) {
+      return false;
+    }
+    else {
+      head = remove(item, head);
+      size--;
+      return true;
+    }
+  }
+
   */
 /*
  Node * temphead = NULL;

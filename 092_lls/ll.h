@@ -124,12 +124,12 @@ class LinkedList {
       Node * temptail = NULL;
 
       for (int i = 0; i < rhs.getSize(); i++) {
-        temphead = new Node(rhs[i], temphead);
-        if (temptail == NULL) {
-          temptail = temphead;
+        temptail = new Node(rhs[i], NULL, temptail);
+        if (temphead == NULL) {
+          temphead = temptail;
         }
         else {
-          temphead->next->previous = temphead;
+          temptail->previous->next = temptail;
         }
       }
 
@@ -138,7 +138,7 @@ class LinkedList {
         delete head;
         head = temp;
       }
-      tail = NULL;
+
       head = temphead;
       tail = temptail;
       size = rhs.getSize();
@@ -153,6 +153,8 @@ class LinkedList {
       head = temp;
     }
   }
+
+  friend void testList(void);
 };
 
 #endif

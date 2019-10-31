@@ -1,1 +1,6 @@
-Hi I am Leonard, a welcome to my final presentation, welcome to my final presenation, welcome. a a
+A private inner class Node for its nodes, which should have
+   data,next, and previous.  You may wish to write some constructors too.
+ - Two private Node *s: one for the head of the list and one for the tail of the list.
+ - A "void addFront(const T &item)" method which adds the item to the front
+ - A "void addBack(const T &item)" method which adds the item to the back
+ - A "bool remove(const T &item)" method which removes the specified item from the

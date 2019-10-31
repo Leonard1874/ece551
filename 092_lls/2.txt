@@ -1,1 +1,10 @@
+- A "bool remove(const T &item)" method which removes the specified item from the
+   list (assume that == is overloaded on Ts, and use it to tell if you have
+   the item you want). This should return true if an item was actually removed
+   and false if no such item existed.  You should only remove the first
+   (starting from the head) if there are multiple items that match.
+ - A "T& operator[](int index)" which gives a reference to the data
+   in the "index" element (starting from 0).  You should make an exception
+   class (which extends std::exception) and throw an instance of it
+   when the requested item does not exist.
 

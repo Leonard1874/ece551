@@ -58,6 +58,7 @@ class LinkedList {
     return -1;
   }
 
+ private:
   Node * remove(const T & data, Node * current) {
     if (current == NULL) {
       return NULL;
@@ -71,6 +72,7 @@ class LinkedList {
     return current;
   }
 
+ public:
   bool remove(const T & item) {
     if (find(item) == -1) {
       return false;

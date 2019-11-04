@@ -1,5 +1,8 @@
 #include "function.h"
 int binarySearchForZero(Function<int, int> * f, int low, int high) {
+  if (low == high) {
+    return low;
+  }
   int l = low;
   int r = high - 1;
   int res = 0;

@@ -3,11 +3,15 @@
 #include <iostream>
 
 #include "function.h"
+/*
 int binarySearchForZero(Function<int, int> * f, int low, int high) {
+  if (low == high){
+    return low;
+  }
   int l = low;
-  int r = high - 1;
+  int r = high;
   int res = 0;
-  while (l <= r) {
+  while (l < r) {
     if (l == r) {
       if (l == low) {
         int t = f->invoke(l);
@@ -52,7 +56,28 @@ int binarySearchForZero(Function<int, int> * f, int low, int high) {
   }
   return res;
 }
-
+*/
+int binarySearchForZero(Function<int, int> * f, int low, int high) {
+  if (low == high) {
+    return low;
+  }
+  high -= 1;
+  int res = low;
+  while (low <= high) {
+    int mid = (low + high) / 2;
+    int tmp = f->invoke(mid);
+    //std::cout << low << ", " << mid << ", " << high << std::endl;
+    if (tmp > 0) {
+      high = mid - 1;
+    }
+    if (tmp <= 0) {
+      res = mid;
+      low = mid + 1;
+    }
+    //std::cout << res << std::endl;
+  }
+  return res;
+}
 //extern int binarySearchForZero(Function<int, int> * f, int low, int high);
 void check(Function<int, int> * f,
            int low,
@@ -60,11 +85,11 @@ void check(Function<int, int> * f,
            int expected_ans,
            const char * mesg) {
   //test runtime h > l
-  std::cout << log2(high - low) + 1 << std::endl;
-  CountedIntFn c1(log2(high - low) + 2, f, mesg);
+  //std::cout << log2(high - low) + 1 << std::endl;
+  CountedIntFn c1(log2(high - low) + 1, f, mesg);
   Function<int, int> * fc1 = &c1;
   int ans = binarySearchForZero(fc1, low, high);
-  std::cout << ans << std::endl;
+  //std::cout << ans << std::endl;
   //test correctness
   assert(ans == expected_ans);
 }

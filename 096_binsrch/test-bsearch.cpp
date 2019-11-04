@@ -25,14 +25,19 @@ int binarySearchForZero(Function<int, int> * f, int low, int high) {
       }
       if (r != low && l != high - 1) {
         int t = f->invoke(r + 1);
+        int t1 = f->invoke(r - 1);
         if (t > 0) {
           res = r;
+          break;
+        }
+        if (t1 < 0) {
+          res = r - 1;
           break;
         }
       }
     }
     int m = r + (l - r) / 2;
-    //std::cout << l << ", " << m << ", " << r << std::endl;
+    std::cout << l << ", " << m << ", " << r << std::endl;
     int tmp = f->invoke(m);
     if (tmp == 0) {
       res = m;
@@ -55,10 +60,11 @@ void check(Function<int, int> * f,
            int expected_ans,
            const char * mesg) {
   //test runtime h > l
-  CountedIntFn c1(log2(high - low) + 1, f, mesg);
+  std::cout << log2(high - low) + 1 << std::endl;
+  CountedIntFn c1(log2(high - low) + 2, f, mesg);
   Function<int, int> * fc1 = &c1;
   int ans = binarySearchForZero(fc1, low, high);
-  //std::cout << ans << std::endl;
+  std::cout << ans << std::endl;
   //test correctness
   assert(ans == expected_ans);
 }
@@ -83,6 +89,9 @@ int main(void) {
   check(f4, -1, 3, 0, "testeven");    //6
   check(f4, -3, 0, -1, "testright");  //5
   check(f4, 0, 6, 0, "testleft");
-
+  //test non-linear range
+  NLinFunction nlin1;
+  Function<int, int> * f5 = &nlin1;
+  check(f5, -1, 5, 1, "testnonlinear");
   return EXIT_SUCCESS;
 }

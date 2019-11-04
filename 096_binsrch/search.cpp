@@ -21,14 +21,19 @@ int binarySearchForZero(Function<int, int> * f, int low, int high) {
       }
       if (r != low && l != high - 1) {
         int t = f->invoke(r + 1);
+        int t1 = f->invoke(r - 1);
         if (t > 0) {
           res = r;
+          break;
+        }
+        if (t1 < 0) {
+          res = r - 1;
           break;
         }
       }
     }
     int m = r + (l - r) / 2;
-    //std::cout << l << ", " << m << ", " << r << std::endl;
+    //    std::cout << l << ", " << m << ", " << r << std::endl;
     int tmp = f->invoke(m);
     if (tmp == 0) {
       res = m;

@@ -30,6 +30,11 @@ class LinFunction : public Function<int, int> {
   virtual int invoke(int arg) { return 2 * arg; }
 };
 
+class NLinFunction : public Function<int, int> {
+ public:
+  virtual int invoke(int arg) { return arg * arg - 2; }
+};
+
 class CountedIntFn : public Function<int, int> {
  protected:
   unsigned remaining;

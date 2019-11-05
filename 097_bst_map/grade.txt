@@ -1,0 +1,410 @@
+Grading at 11/05/2019:21:36:31.635281
+For commit ID edb9870d3119e28566a24989c53a9cc587f6670a
+Grading at Tue Nov  5 16:36:21 EST 2019
+-----------------------------------------------
+testcase 1 : Testing with BstMap<int,int>
+...compiling...
+The code compiled.
+  - Valgrind reported errors
+Valgrind reported errors (test failed).
+==129195== Memcheck, a memory error detector
+==129195== Copyright (C) 2002-2017, and GNU GPL'd, by Julian Seward et al.
+==129195== Using Valgrind-3.13.0 and LibVEX; rerun with -h for copyright info
+==129195== Command: ./test.1
+==129195== Parent PID: 129194
+==129195== 
+==129195== Invalid read of size 8
+==129195==    at 0x10ABE6: BstMap<int, int>::remove_helper(BstMap<int, int>::Node*) (in /home/ece551db/graderbase/work/ww165.097_bst_map.DoeODL/test.1)
+==129195==    by 0x10AA40: BstMap<int, int>::remove(int const&) (in /home/ece551db/graderbase/work/ww165.097_bst_map.DoeODL/test.1)
+==129195==    by 0x109902: main (in /home/ece551db/graderbase/work/ww165.097_bst_map.DoeODL/test.1)
+==129195==  Address 0x8 is not stack'd, malloc'd or (recently) free'd
+==129195== 
+==129195== 
+==129195== Process terminating with default action of signal 11 (SIGSEGV)
+==129195==  Access not within mapped region at address 0x8
+==129195==    at 0x10ABE6: BstMap<int, int>::remove_helper(BstMap<int, int>::Node*) (in /home/ece551db/graderbase/work/ww165.097_bst_map.DoeODL/test.1)
+==129195==    by 0x10AA40: BstMap<int, int>::remove(int const&) (in /home/ece551db/graderbase/work/ww165.097_bst_map.DoeODL/test.1)
+==129195==    by 0x109902: main (in /home/ece551db/graderbase/work/ww165.097_bst_map.DoeODL/test.1)
+==129195==  If you believe this happened as a result of a stack
+==129195==  overflow in your program's main thread (unlikely but
+==129195==  possible), you can try to increase the size of the
+==129195==  main thread stack using the --main-stacksize= flag.
+==129195==  The main thread stack size used in this run was 8388608.
+==129195== 
+==129195== HEAP SUMMARY:
+==129195==     in use at exit: 256 bytes in 9 blocks
+==129195==   total heap usage: 101 allocs, 92 frees, 82,672 bytes allocated
+==129195== 
+==129195== LEAK SUMMARY:
+==129195==    definitely lost: 0 bytes in 0 blocks
+==129195==    indirectly lost: 0 bytes in 0 blocks
+==129195==      possibly lost: 0 bytes in 0 blocks
+==129195==    still reachable: 256 bytes in 9 blocks
+==129195==         suppressed: 0 bytes in 0 blocks
+==129195== Reachable blocks (those to which a pointer was found) are not shown.
+==129195== To see them, rerun with: --leak-check=full --show-leak-kinds=all
+==129195== 
+==129195== For counts of detected and suppressed errors, rerun with: -v
+==129195== ERROR SUMMARY: 1 errors from 1 contexts (suppressed: 0 from 0)
+-----------------------------------------------
+testcase 2 : Testing with BstMap<int,std::string>
+...compiling...
+The code compiled.
+  - Valgrind reported errors
+Valgrind reported errors (test failed).
+==129204== Memcheck, a memory error detector
+==129204== Copyright (C) 2002-2017, and GNU GPL'd, by Julian Seward et al.
+==129204== Using Valgrind-3.13.0 and LibVEX; rerun with -h for copyright info
+==129204== Command: ./test.2
+==129204== Parent PID: 129203
+==129204== 
+==129204== Invalid read of size 8
+==129204==    at 0x10AF51: BstMap<int, std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > >::remove_helper(BstMap<int, std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > >::Node*) (in /home/ece551db/graderbase/work/ww165.097_bst_map.DoeODL/test.2)
+==129204==    by 0x10AD25: BstMap<int, std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > >::remove(int const&) (in /home/ece551db/graderbase/work/ww165.097_bst_map.DoeODL/test.2)
+==129204==    by 0x1099AE: main (in /home/ece551db/graderbase/work/ww165.097_bst_map.DoeODL/test.2)
+==129204==  Address 0x8 is not stack'd, malloc'd or (recently) free'd
+==129204== 
+==129204== 
+==129204== Process terminating with default action of signal 11 (SIGSEGV)
+==129204==  Access not within mapped region at address 0x8
+==129204==    at 0x10AF51: BstMap<int, std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > >::remove_helper(BstMap<int, std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > >::Node*) (in /home/ece551db/graderbase/work/ww165.097_bst_map.DoeODL/test.2)
+==129204==    by 0x10AD25: BstMap<int, std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > >::remove(int const&) (in /home/ece551db/graderbase/work/ww165.097_bst_map.DoeODL/test.2)
+==129204==    by 0x1099AE: main (in /home/ece551db/graderbase/work/ww165.097_bst_map.DoeODL/test.2)
+==129204==  If you believe this happened as a result of a stack
+==129204==  overflow in your program's main thread (unlikely but
+==129204==  possible), you can try to increase the size of the
+==129204==  main thread stack using the --main-stacksize= flag.
+==129204==  The main thread stack size used in this run was 8388608.
+==129204== 
+==129204== HEAP SUMMARY:
+==129204==     in use at exit: 575 bytes in 14 blocks
+==129204==   total heap usage: 161 allocs, 147 frees, 84,672 bytes allocated
+==129204== 
+==129204== LEAK SUMMARY:
+==129204==    definitely lost: 0 bytes in 0 blocks
+==129204==    indirectly lost: 0 bytes in 0 blocks
+==129204==      possibly lost: 0 bytes in 0 blocks
+==129204==    still reachable: 575 bytes in 14 blocks
+==129204==         suppressed: 0 bytes in 0 blocks
+==129204== Reachable blocks (those to which a pointer was found) are not shown.
+==129204== To see them, rerun with: --leak-check=full --show-leak-kinds=all
+==129204== 
+==129204== For counts of detected and suppressed errors, rerun with: -v
+==129204== ERROR SUMMARY: 1 errors from 1 contexts (suppressed: 0 from 0)
+-----------------------------------------------
+testcase 3 : Testing with BstMap<int,(a custom class we wrote)>
+...compiling...
+The code compiled.
+  - Valgrind reported errors
+Valgrind reported errors (test failed).
+==129213== Memcheck, a memory error detector
+==129213== Copyright (C) 2002-2017, and GNU GPL'd, by Julian Seward et al.
+==129213== Using Valgrind-3.13.0 and LibVEX; rerun with -h for copyright info
+==129213== Command: ./test.3
+==129213== Parent PID: 129212
+==129213== 
+==129213== Invalid read of size 8
+==129213==    at 0x10AFE9: BstMap<int, Tester>::remove_helper(BstMap<int, Tester>::Node*) (in /home/ece551db/graderbase/work/ww165.097_bst_map.DoeODL/test.3)
+==129213==    by 0x10ADBD: BstMap<int, Tester>::remove(int const&) (in /home/ece551db/graderbase/work/ww165.097_bst_map.DoeODL/test.3)
+==129213==    by 0x1099AE: main (in /home/ece551db/graderbase/work/ww165.097_bst_map.DoeODL/test.3)
+==129213==  Address 0x8 is not stack'd, malloc'd or (recently) free'd
+==129213== 
+==129213== 
+==129213== Process terminating with default action of signal 11 (SIGSEGV)
+==129213==  Access not within mapped region at address 0x8
+==129213==    at 0x10AFE9: BstMap<int, Tester>::remove_helper(BstMap<int, Tester>::Node*) (in /home/ece551db/graderbase/work/ww165.097_bst_map.DoeODL/test.3)
+==129213==    by 0x10ADBD: BstMap<int, Tester>::remove(int const&) (in /home/ece551db/graderbase/work/ww165.097_bst_map.DoeODL/test.3)
+==129213==    by 0x1099AE: main (in /home/ece551db/graderbase/work/ww165.097_bst_map.DoeODL/test.3)
+==129213==  If you believe this happened as a result of a stack
+==129213==  overflow in your program's main thread (unlikely but
+==129213==  possible), you can try to increase the size of the
+==129213==  main thread stack using the --main-stacksize= flag.
+==129213==  The main thread stack size used in this run was 8388608.
+==129213== 
+==129213== HEAP SUMMARY:
+==129213==     in use at exit: 631 bytes in 14 blocks
+==129213==   total heap usage: 181 allocs, 167 frees, 85,272 bytes allocated
+==129213== 
+==129213== LEAK SUMMARY:
+==129213==    definitely lost: 0 bytes in 0 blocks
+==129213==    indirectly lost: 0 bytes in 0 blocks
+==129213==      possibly lost: 0 bytes in 0 blocks
+==129213==    still reachable: 631 bytes in 14 blocks
+==129213==         suppressed: 0 bytes in 0 blocks
+==129213== Reachable blocks (those to which a pointer was found) are not shown.
+==129213== To see them, rerun with: --leak-check=full --show-leak-kinds=all
+==129213== 
+==129213== For counts of detected and suppressed errors, rerun with: -v
+==129213== ERROR SUMMARY: 1 errors from 1 contexts (suppressed: 0 from 0)
+-----------------------------------------------
+testcase 4 : Testing with BstMap<std::string,int>
+...compiling...
+The code compiled.
+  - Valgrind reported errors
+Valgrind reported errors (test failed).
+==129232== Memcheck, a memory error detector
+==129232== Copyright (C) 2002-2017, and GNU GPL'd, by Julian Seward et al.
+==129232== Using Valgrind-3.13.0 and LibVEX; rerun with -h for copyright info
+==129232== Command: ./test.4
+==129232== Parent PID: 129231
+==129232== 
+==129232== Invalid read of size 8
+==129232==    at 0x10B155: BstMap<std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >, int>::remove_helper(BstMap<std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >, int>::Node*) (in /home/ece551db/graderbase/work/ww165.097_bst_map.DoeODL/test.4)
+==129232==    by 0x10AEED: BstMap<std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >, int>::remove(std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const&) (in /home/ece551db/graderbase/work/ww165.097_bst_map.DoeODL/test.4)
+==129232==    by 0x109B70: main (in /home/ece551db/graderbase/work/ww165.097_bst_map.DoeODL/test.4)
+==129232==  Address 0x8 is not stack'd, malloc'd or (recently) free'd
+==129232== 
+==129232== 
+==129232== Process terminating with default action of signal 11 (SIGSEGV)
+==129232==  Access not within mapped region at address 0x8
+==129232==    at 0x10B155: BstMap<std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >, int>::remove_helper(BstMap<std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >, int>::Node*) (in /home/ece551db/graderbase/work/ww165.097_bst_map.DoeODL/test.4)
+==129232==    by 0x10AEED: BstMap<std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >, int>::remove(std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const&) (in /home/ece551db/graderbase/work/ww165.097_bst_map.DoeODL/test.4)
+==129232==    by 0x109B70: main (in /home/ece551db/graderbase/work/ww165.097_bst_map.DoeODL/test.4)
+==129232==  If you believe this happened as a result of a stack
+==129232==  overflow in your program's main thread (unlikely but
+==129232==  possible), you can try to increase the size of the
+==129232==  main thread stack using the --main-stacksize= flag.
+==129232==  The main thread stack size used in this run was 8388608.
+==129232== 
+==129232== HEAP SUMMARY:
+==129232==     in use at exit: 224 bytes in 5 blocks
+==129232==   total heap usage: 101 allocs, 96 frees, 83,472 bytes allocated
+==129232== 
+==129232== LEAK SUMMARY:
+==129232==    definitely lost: 0 bytes in 0 blocks
+==129232==    indirectly lost: 0 bytes in 0 blocks
+==129232==      possibly lost: 0 bytes in 0 blocks
+==129232==    still reachable: 224 bytes in 5 blocks
+==129232==         suppressed: 0 bytes in 0 blocks
+==129232== Reachable blocks (those to which a pointer was found) are not shown.
+==129232== To see them, rerun with: --leak-check=full --show-leak-kinds=all
+==129232== 
+==129232== For counts of detected and suppressed errors, rerun with: -v
+==129232== ERROR SUMMARY: 1 errors from 1 contexts (suppressed: 0 from 0)
+-----------------------------------------------
+testcase 5 : Testing with BstMap<std::string,std::string>
+...compiling...
+The code compiled.
+  - Valgrind reported errors
+Valgrind reported errors (test failed).
+==129241== Memcheck, a memory error detector
+==129241== Copyright (C) 2002-2017, and GNU GPL'd, by Julian Seward et al.
+==129241== Using Valgrind-3.13.0 and LibVEX; rerun with -h for copyright info
+==129241== Command: ./test.5
+==129241== Parent PID: 129240
+==129241== 
+==129241== Invalid read of size 8
+==129241==    at 0x10B385: BstMap<std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >, std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > >::remove_helper(BstMap<std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >, std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > >::Node*) (in /home/ece551db/graderbase/work/ww165.097_bst_map.DoeODL/test.5)
+==129241==    by 0x10B0FF: BstMap<std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >, std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > >::remove(std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const&) (in /home/ece551db/graderbase/work/ww165.097_bst_map.DoeODL/test.5)
+==129241==    by 0x109B8D: main (in /home/ece551db/graderbase/work/ww165.097_bst_map.DoeODL/test.5)
+==129241==  Address 0x8 is not stack'd, malloc'd or (recently) free'd
+==129241== 
+==129241== 
+==129241== Process terminating with default action of signal 11 (SIGSEGV)
+==129241==  Access not within mapped region at address 0x8
+==129241==    at 0x10B385: BstMap<std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >, std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > >::remove_helper(BstMap<std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >, std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > >::Node*) (in /home/ece551db/graderbase/work/ww165.097_bst_map.DoeODL/test.5)
+==129241==    by 0x10B0FF: BstMap<std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >, std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > >::remove(std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const&) (in /home/ece551db/graderbase/work/ww165.097_bst_map.DoeODL/test.5)
+==129241==    by 0x109B8D: main (in /home/ece551db/graderbase/work/ww165.097_bst_map.DoeODL/test.5)
+==129241==  If you believe this happened as a result of a stack
+==129241==  overflow in your program's main thread (unlikely but
+==129241==  possible), you can try to increase the size of the
+==129241==  main thread stack using the --main-stacksize= flag.
+==129241==  The main thread stack size used in this run was 8388608.
+==129241== 
+==129241== HEAP SUMMARY:
+==129241==     in use at exit: 377 bytes in 8 blocks
+==129241==   total heap usage: 165 allocs, 157 frees, 85,396 bytes allocated
+==129241== 
+==129241== LEAK SUMMARY:
+==129241==    definitely lost: 0 bytes in 0 blocks
+==129241==    indirectly lost: 0 bytes in 0 blocks
+==129241==      possibly lost: 0 bytes in 0 blocks
+==129241==    still reachable: 377 bytes in 8 blocks
+==129241==         suppressed: 0 bytes in 0 blocks
+==129241== Reachable blocks (those to which a pointer was found) are not shown.
+==129241== To see them, rerun with: --leak-check=full --show-leak-kinds=all
+==129241== 
+==129241== For counts of detected and suppressed errors, rerun with: -v
+==129241== ERROR SUMMARY: 1 errors from 1 contexts (suppressed: 0 from 0)
+-----------------------------------------------
+testcase 6 : Testing with BstMap<std::string,(a custom class we wrote)>
+...compiling...
+The code compiled.
+  - Valgrind reported errors
+Valgrind reported errors (test failed).
+==129250== Memcheck, a memory error detector
+==129250== Copyright (C) 2002-2017, and GNU GPL'd, by Julian Seward et al.
+==129250== Using Valgrind-3.13.0 and LibVEX; rerun with -h for copyright info
+==129250== Command: ./test.6
+==129250== Parent PID: 129249
+==129250== 
+==129250== Invalid read of size 8
+==129250==    at 0x10B41D: BstMap<std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >, Tester>::remove_helper(BstMap<std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >, Tester>::Node*) (in /home/ece551db/graderbase/work/ww165.097_bst_map.DoeODL/test.6)
+==129250==    by 0x10B197: BstMap<std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >, Tester>::remove(std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const&) (in /home/ece551db/graderbase/work/ww165.097_bst_map.DoeODL/test.6)
+==129250==    by 0x109B8D: main (in /home/ece551db/graderbase/work/ww165.097_bst_map.DoeODL/test.6)
+==129250==  Address 0x8 is not stack'd, malloc'd or (recently) free'd
+==129250== 
+==129250== 
+==129250== Process terminating with default action of signal 11 (SIGSEGV)
+==129250==  Access not within mapped region at address 0x8
+==129250==    at 0x10B41D: BstMap<std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >, Tester>::remove_helper(BstMap<std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >, Tester>::Node*) (in /home/ece551db/graderbase/work/ww165.097_bst_map.DoeODL/test.6)
+==129250==    by 0x10B197: BstMap<std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >, Tester>::remove(std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const&) (in /home/ece551db/graderbase/work/ww165.097_bst_map.DoeODL/test.6)
+==129250==    by 0x109B8D: main (in /home/ece551db/graderbase/work/ww165.097_bst_map.DoeODL/test.6)
+==129250==  If you believe this happened as a result of a stack
+==129250==  overflow in your program's main thread (unlikely but
+==129250==  possible), you can try to increase the size of the
+==129250==  main thread stack using the --main-stacksize= flag.
+==129250==  The main thread stack size used in this run was 8388608.
+==129250== 
+==129250== HEAP SUMMARY:
+==129250==     in use at exit: 401 bytes in 8 blocks
+==129250==   total heap usage: 185 allocs, 177 frees, 85,996 bytes allocated
+==129250== 
+==129250== LEAK SUMMARY:
+==129250==    definitely lost: 0 bytes in 0 blocks
+==129250==    indirectly lost: 0 bytes in 0 blocks
+==129250==      possibly lost: 0 bytes in 0 blocks
+==129250==    still reachable: 401 bytes in 8 blocks
+==129250==         suppressed: 0 bytes in 0 blocks
+==129250== Reachable blocks (those to which a pointer was found) are not shown.
+==129250== To see them, rerun with: --leak-check=full --show-leak-kinds=all
+==129250== 
+==129250== For counts of detected and suppressed errors, rerun with: -v
+==129250== ERROR SUMMARY: 1 errors from 1 contexts (suppressed: 0 from 0)
+-----------------------------------------------
+testcase 7 : Testing with BstMap<(a custom class we wrote),int>
+...compiling...
+The code compiled.
+  - Valgrind reported errors
+Valgrind reported errors (test failed).
+==129259== Memcheck, a memory error detector
+==129259== Copyright (C) 2002-2017, and GNU GPL'd, by Julian Seward et al.
+==129259== Using Valgrind-3.13.0 and LibVEX; rerun with -h for copyright info
+==129259== Command: ./test.7
+==129259== Parent PID: 129258
+==129259== 
+==129259== Invalid read of size 8
+==129259==    at 0x10B199: BstMap<Tester, int>::remove_helper(BstMap<Tester, int>::Node*) (in /home/ece551db/graderbase/work/ww165.097_bst_map.DoeODL/test.7)
+==129259==    by 0x10AF59: BstMap<Tester, int>::remove(Tester const&) (in /home/ece551db/graderbase/work/ww165.097_bst_map.DoeODL/test.7)
+==129259==    by 0x109AE0: main (in /home/ece551db/graderbase/work/ww165.097_bst_map.DoeODL/test.7)
+==129259==  Address 0x8 is not stack'd, malloc'd or (recently) free'd
+==129259== 
+==129259== 
+==129259== Process terminating with default action of signal 11 (SIGSEGV)
+==129259==  Access not within mapped region at address 0x8
+==129259==    at 0x10B199: BstMap<Tester, int>::remove_helper(BstMap<Tester, int>::Node*) (in /home/ece551db/graderbase/work/ww165.097_bst_map.DoeODL/test.7)
+==129259==    by 0x10AF59: BstMap<Tester, int>::remove(Tester const&) (in /home/ece551db/graderbase/work/ww165.097_bst_map.DoeODL/test.7)
+==129259==    by 0x109AE0: main (in /home/ece551db/graderbase/work/ww165.097_bst_map.DoeODL/test.7)
+==129259==  If you believe this happened as a result of a stack
+==129259==  overflow in your program's main thread (unlikely but
+==129259==  possible), you can try to increase the size of the
+==129259==  main thread stack using the --main-stacksize= flag.
+==129259==  The main thread stack size used in this run was 8388608.
+==129259== 
+==129259== HEAP SUMMARY:
+==129259==     in use at exit: 536 bytes in 9 blocks
+==129259==   total heap usage: 101 allocs, 92 frees, 83,672 bytes allocated
+==129259== 
+==129259== LEAK SUMMARY:
+==129259==    definitely lost: 0 bytes in 0 blocks
+==129259==    indirectly lost: 0 bytes in 0 blocks
+==129259==      possibly lost: 0 bytes in 0 blocks
+==129259==    still reachable: 536 bytes in 9 blocks
+==129259==         suppressed: 0 bytes in 0 blocks
+==129259== Reachable blocks (those to which a pointer was found) are not shown.
+==129259== To see them, rerun with: --leak-check=full --show-leak-kinds=all
+==129259== 
+==129259== For counts of detected and suppressed errors, rerun with: -v
+==129259== ERROR SUMMARY: 1 errors from 1 contexts (suppressed: 0 from 0)
+-----------------------------------------------
+testcase 8 : Testing with BstMap<(a custom class we wrote),std::string>
+...compiling...
+The code compiled.
+  - Valgrind reported errors
+Valgrind reported errors (test failed).
+==129269== Memcheck, a memory error detector
+==129269== Copyright (C) 2002-2017, and GNU GPL'd, by Julian Seward et al.
+==129269== Using Valgrind-3.13.0 and LibVEX; rerun with -h for copyright info
+==129269== Command: ./test.8
+==129269== Parent PID: 129268
+==129269== 
+==129269== Invalid read of size 8
+==129269==    at 0x10B3C9: BstMap<Tester, std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > >::remove_helper(BstMap<Tester, std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > >::Node*) (in /home/ece551db/graderbase/work/ww165.097_bst_map.DoeODL/test.8)
+==129269==    by 0x10B16B: BstMap<Tester, std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > >::remove(Tester const&) (in /home/ece551db/graderbase/work/ww165.097_bst_map.DoeODL/test.8)
+==129269==    by 0x109AFD: main (in /home/ece551db/graderbase/work/ww165.097_bst_map.DoeODL/test.8)
+==129269==  Address 0x8 is not stack'd, malloc'd or (recently) free'd
+==129269== 
+==129269== 
+==129269== Process terminating with default action of signal 11 (SIGSEGV)
+==129269==  Access not within mapped region at address 0x8
+==129269==    at 0x10B3C9: BstMap<Tester, std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > >::remove_helper(BstMap<Tester, std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > >::Node*) (in /home/ece551db/graderbase/work/ww165.097_bst_map.DoeODL/test.8)
+==129269==    by 0x10B16B: BstMap<Tester, std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > >::remove(Tester const&) (in /home/ece551db/graderbase/work/ww165.097_bst_map.DoeODL/test.8)
+==129269==    by 0x109AFD: main (in /home/ece551db/graderbase/work/ww165.097_bst_map.DoeODL/test.8)
+==129269==  If you believe this happened as a result of a stack
+==129269==  overflow in your program's main thread (unlikely but
+==129269==  possible), you can try to increase the size of the
+==129269==  main thread stack using the --main-stacksize= flag.
+==129269==  The main thread stack size used in this run was 8388608.
+==129269== 
+==129269== HEAP SUMMARY:
+==129269==     in use at exit: 799 bytes in 14 blocks
+==129269==   total heap usage: 161 allocs, 147 frees, 85,472 bytes allocated
+==129269== 
+==129269== LEAK SUMMARY:
+==129269==    definitely lost: 0 bytes in 0 blocks
+==129269==    indirectly lost: 0 bytes in 0 blocks
+==129269==      possibly lost: 0 bytes in 0 blocks
+==129269==    still reachable: 799 bytes in 14 blocks
+==129269==         suppressed: 0 bytes in 0 blocks
+==129269== Reachable blocks (those to which a pointer was found) are not shown.
+==129269== To see them, rerun with: --leak-check=full --show-leak-kinds=all
+==129269== 
+==129269== For counts of detected and suppressed errors, rerun with: -v
+==129269== ERROR SUMMARY: 1 errors from 1 contexts (suppressed: 0 from 0)
+-----------------------------------------------
+testcase 9 : Testing with BstMap<(a custom class we wrote),(a custom class we wrote)>
+...compiling...
+The code compiled.
+  - Valgrind reported errors
+Valgrind reported errors (test failed).
+==129288== Memcheck, a memory error detector
+==129288== Copyright (C) 2002-2017, and GNU GPL'd, by Julian Seward et al.
+==129288== Using Valgrind-3.13.0 and LibVEX; rerun with -h for copyright info
+==129288== Command: ./test.9
+==129288== Parent PID: 129287
+==129288== 
+==129288== Invalid read of size 8
+==129288==    at 0x10B41D: BstMap<Tester, Tester>::remove_helper(BstMap<Tester, Tester>::Node*) (in /home/ece551db/graderbase/work/ww165.097_bst_map.DoeODL/test.9)
+==129288==    by 0x10B1BE: BstMap<Tester, Tester>::remove(Tester const&) (in /home/ece551db/graderbase/work/ww165.097_bst_map.DoeODL/test.9)
+==129288==    by 0x109B0F: main (in /home/ece551db/graderbase/work/ww165.097_bst_map.DoeODL/test.9)
+==129288==  Address 0x8 is not stack'd, malloc'd or (recently) free'd
+==129288== 
+==129288== 
+==129288== Process terminating with default action of signal 11 (SIGSEGV)
+==129288==  Access not within mapped region at address 0x8
+==129288==    at 0x10B41D: BstMap<Tester, Tester>::remove_helper(BstMap<Tester, Tester>::Node*) (in /home/ece551db/graderbase/work/ww165.097_bst_map.DoeODL/test.9)
+==129288==    by 0x10B1BE: BstMap<Tester, Tester>::remove(Tester const&) (in /home/ece551db/graderbase/work/ww165.097_bst_map.DoeODL/test.9)
+==129288==    by 0x109B0F: main (in /home/ece551db/graderbase/work/ww165.097_bst_map.DoeODL/test.9)
+==129288==  If you believe this happened as a result of a stack
+==129288==  overflow in your program's main thread (unlikely but
+==129288==  possible), you can try to increase the size of the
+==129288==  main thread stack using the --main-stacksize= flag.
+==129288==  The main thread stack size used in this run was 8388608.
+==129288== 
+==129288== HEAP SUMMARY:
+==129288==     in use at exit: 855 bytes in 14 blocks
+==129288==   total heap usage: 181 allocs, 167 frees, 86,072 bytes allocated
+==129288== 
+==129288== LEAK SUMMARY:
+==129288==    definitely lost: 0 bytes in 0 blocks
+==129288==    indirectly lost: 0 bytes in 0 blocks
+==129288==      possibly lost: 0 bytes in 0 blocks
+==129288==    still reachable: 855 bytes in 14 blocks
+==129288==         suppressed: 0 bytes in 0 blocks
+==129288== Reachable blocks (those to which a pointer was found) are not shown.
+==129288== To see them, rerun with: --leak-check=full --show-leak-kinds=all
+==129288== 
+==129288== For counts of detected and suppressed errors, rerun with: -v
+==129288== ERROR SUMMARY: 1 errors from 1 contexts (suppressed: 0 from 0)
+
+Overall Grade: F

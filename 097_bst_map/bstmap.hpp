@@ -29,6 +29,7 @@ class BstMap : public Map<K, V> {
   Node * root;
 
  public:
+  friend void testit(void);
   virtual const V & lookup(const K & key) const throw(std::invalid_argument) {
     Node * cur = root;
     while (cur != NULL) {
@@ -133,6 +134,7 @@ class BstMap : public Map<K, V> {
       }
     }
     if (cur == NULL) {
+      std::cerr << "not such node" << std::endl;
       return;
     }
     else {
@@ -151,12 +153,35 @@ class BstMap : public Map<K, V> {
         remove_helper(toRemove);
       }
       else {
-        Node * toRemove = cur;
-        remove_helper(toRemove);
+        if (cur == root) {
+          if (cur->right == NULL && cur->left == NULL) {
+            delete cur;
+            root = NULL;
+          }
+          else {
+            if (cur->right != NULL) {
+              cur = cur->right;
+              cur->parent = NULL;
+              delete root;
+              root = cur;
+            }
+            if (cur->left != NULL) {
+              cur = cur->left;
+              cur->parent = NULL;
+              delete root;
+              root = cur;
+            }
+          }
+        }
+        else {
+          Node * toRemove = cur;
+          remove_helper(toRemove);
+        }
       }
     }
   }
 
+ private:
   void printbst(Node * cur) {
     if (cur != NULL) {
       printbst(cur->left);
@@ -165,6 +190,7 @@ class BstMap : public Map<K, V> {
     }
   }
 
+ public:
   void printbst() {
     Node * cur = root;
     printbst(cur);

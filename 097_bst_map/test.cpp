@@ -13,9 +13,22 @@ void testit(void) {
   for (int i = 0; i < 11; i++) {
     bm1.add(k[i], i);
   }
-
   bm1.printbst();
+  std::cout << "copying!" << std::endl;
+  BstMap<int, int> bm2(bm1);
+  bm2.printbst();
 
+  BstMap<int, int> bm3;
+
+  int k1[] = {13, 48, 19, 75, 67, 16, 77, 99, -111, 150};
+  for (int i = 0; i < 10; i++) {
+    bm3.add(k1[i], i);
+  }
+  bm3.printbst();
+  std::cout << "=" << std::endl;
+  bm3 = bm1;
+  bm3.printbst();
+  /*
   for (int j = 0; j < 10; j++) {
     try {
       std::cout << bm1.lookup(k[j]) << std::endl;
@@ -61,7 +74,7 @@ void testit(void) {
   }
 
   bm1.printbst();
-
+  */
   /*
   BstMap<int, int> bm2;
 
@@ -156,6 +169,27 @@ void testit(void) {
 }
 
 int main(void) {
-  testit();
+  // testit();
+  BstMap<int, int> bm1;
+
+  int k[] = {33, 44, 12, 55, 99, 99, 16, 77, 0, -1, 100};
+  for (int i = 0; i < 11; i++) {
+    bm1.add(k[i], i);
+  }
+  bm1.printbst();
+  std::cout << "copying!" << std::endl;
+  BstMap<int, int> bm2(bm1);
+  bm2.printbst();
+
+  BstMap<int, int> bm3;
+
+  int k1[] = {13, 48, 19, 75, 67, 16, 77, 99, -111, 150};
+  for (int i = 0; i < 10; i++) {
+    bm3.add(k1[i], i);
+  }
+  bm3.printbst();
+  std::cout << "=" << std::endl;
+  bm3 = bm1;
+  bm3.printbst();
   return EXIT_SUCCESS;
 }

@@ -1,3 +1,4 @@
+#include <algorithm>
 #include <iostream>
 #include <stdexcept>
 
@@ -164,12 +165,38 @@ class BstMap : public Map<K, V> {
     }
   }
 
+  void copy(Node * current) {
+    if (current != NULL) {
+      add(current->key, current->value);
+      copy(current->left);
+      copy(current->right);
+    }
+  }
+
  public:
   BstMap() : root(NULL) {}
-  virtual ~BstMap() {
-    Node * current = root;
-    destroy(current);
+  BstMap(const BstMap & rhs) : root(NULL) {
+    Node * rhscur = rhs.root;
+    if (rhscur != NULL) {
+      copy(rhscur);
+    }
+    else {
+      root = NULL;
+    }
   }
+  BstMap & operator=(const BstMap & rhs) {
+    if (this != &rhs) {
+      BstMap<K, V> temp(rhs);
+      destroy(root);
+      root = NULL;
+      //assert(temp.root != NULL);
+      copy(temp.root);
+      //std::swap(temp, *this);
+    }
+    return *this;
+  }
+
+  virtual ~BstMap() { destroy(root); }
 };
 
 /*

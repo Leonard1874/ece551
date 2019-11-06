@@ -91,7 +91,7 @@ class BstMap : public Map<K, V> {
       }
     }
     else {
-      if (R->left == NULL && R->right != NULL && R->parent != NULL) {
+      if (R->left == NULL && R->right != NULL) {
         if (R->parent->left == R) {
           R->parent->left = R->right;
           R->right->parent = R->parent;
@@ -105,7 +105,7 @@ class BstMap : public Map<K, V> {
           return;
         }
       }
-      else if (R->right == NULL && R->left != NULL && R->parent != NULL) {
+      else if (R->right == NULL && R->left != NULL) {
         if (R->parent->left == R) {
           R->parent->left = R->left;
           R->left->parent = R->parent;

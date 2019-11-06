@@ -7,25 +7,16 @@
 #include "map.h"
 
 void testit(void) {
-  BstMap<int, int> bm1;
-  //BstMap<int, int> bm2;
-  //bm2.add(1, 2);
-  //bm2.remove(1);
-  //bm2.printbst();
-
-  int k[] = {33, 44, 12, 55, 99, 16, 77, 0, -1, 100};
-  for (int i = 0; i < 10; i++) {
-    bm1.add(k[i], i);
-  }
-
-  int v[] = {33, 44, 12, 55, 99, 16, 77, 0, -1, 100};
-  for (int i = 0; i < 10; i++) {
-    std::cout << i << ", " << v[i] << std::endl;
-    bm1.remove(v[i]);
-    bm1.printbst();
-  }
+  /*
   assert(bm1.root == NULL);
   bm1.printbst();
+  int v2[] = {77, 3, 17, 1, -23, 88, 7, 9, 44, 4};
+  for (int i = 0; i < 10; i++) {
+    std::cout << i << ", " << v2[i] << std::endl;
+    bm1.remove(v2[i]);
+    bm1.printbst();
+  }
+  */
   /*
   bm1.printbst();
   for (int j = 0; j < 10; j++) {
@@ -67,6 +58,19 @@ void testit(void) {
 }
 
 int main(void) {
-  testit();
+  // testit();
+  BstMap<int, int> bm1;
+
+  int k[] = {1, 2, 3, 4};
+  for (int i = 0; i < 4; i++) {
+    bm1.add(k[i], i);
+  }
+
+  int v[] = {1, 2, 3, 3, 4};
+  for (int i = 0; i < 5; i++) {
+    std::cout << i << ", " << v[i] << std::endl;
+    bm1.remove(v[i]);
+    bm1.printbst();
+  }
   return EXIT_SUCCESS;
 }

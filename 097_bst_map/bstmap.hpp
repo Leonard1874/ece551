@@ -128,7 +128,7 @@ class BstMap : public Map<K, V> {
         if (cur->key > key) {
           cur = cur->left;
         }
-        if (cur->key < key) {
+        else {
           cur = cur->right;
         }
       }

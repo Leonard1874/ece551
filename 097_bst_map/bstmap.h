@@ -113,9 +113,9 @@ class BstMap : public Map<K, V> {
     }
     */
 
-    if (node == NULL)
+    if (node == NULL) {
       return NULL;
-
+    }
     if (node->key > key) {
       node->left = remove_helper(key, node->left);
       return node;

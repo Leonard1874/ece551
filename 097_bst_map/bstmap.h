@@ -58,11 +58,13 @@ class BstMap : public Map<K, V> {
       if (cur->key == key) {
         cur->value = value;
       }
-      if (cur->key > key) {
-        cur->left = add_helper(key, value, cur->left, cur);
-      }
-      if (cur->key < key) {
-        cur->right = add_helper(key, value, cur->right, cur);
+      else {
+        if (cur->key > key) {
+          cur->left = add_helper(key, value, cur->left, cur);
+        }
+        else {
+          cur->right = add_helper(key, value, cur->right, cur);
+        }
       }
       return cur;
     }
@@ -128,7 +130,7 @@ class BstMap : public Map<K, V> {
         if (cur->key > key) {
           cur = cur->left;
         }
-        if (cur->key < key) {
+        else {
           cur = cur->right;
         }
       }
@@ -165,7 +167,7 @@ class BstMap : public Map<K, V> {
               delete root;
               root = cur;
             }
-            if (cur->left != NULL) {
+            else {
               cur = cur->left;
               cur->parent = NULL;
               delete root;

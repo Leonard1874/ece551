@@ -78,6 +78,7 @@ class BstMap : public Map<K, V> {
 
  private:
   void remove_helper(Node * R) {
+    //assert(R->parent != NULL);
     if (R->left == NULL && R->right == NULL && R->parent != NULL) {
       if (R->parent->left == R) {
         R->parent->left = NULL;
@@ -91,7 +92,7 @@ class BstMap : public Map<K, V> {
       }
     }
     else {
-      if (R->left == NULL && R->right != NULL) {
+      if (R->left == NULL && R->right != NULL && R->parent != NULL) {
         if (R->parent->left == R) {
           R->parent->left = R->right;
           R->right->parent = R->parent;
@@ -105,7 +106,7 @@ class BstMap : public Map<K, V> {
           return;
         }
       }
-      else if (R->right == NULL && R->left != NULL) {
+      else if (R->right == NULL && R->left != NULL && R->parent != NULL) {
         if (R->parent->left == R) {
           R->parent->left = R->left;
           R->left->parent = R->parent;
@@ -163,7 +164,6 @@ class BstMap : public Map<K, V> {
         cur->value = toRemove->value;
         toRemove->key = tmp1;
         toRemove->value = tmp2;
-        //assert(toRemove->left == NULL || toRemove->right == NULL);
         remove_helper(toRemove);
       }
       else {
@@ -198,6 +198,7 @@ class BstMap : public Map<K, V> {
  private:
   void printbst(Node * cur) {
     if (cur != NULL) {
+      assert(cur == root || cur->parent != NULL);
       printbst(cur->left);
       std::cout << "(" << cur->key << ", " << cur->value << ")" << std::endl;
       printbst(cur->right);

@@ -128,7 +128,8 @@ class BstMap : public Map<K, V> {
         }
         else {
           Node * getmin = getMin(cur->right);
-          Node * replace = new Node(getmin->key, getmin->value);
+          Node * replace =
+              new Node(getmin->key, getmin->value, getmin->left, getmin->right);
           replace->right = removeMin(cur->right);
           replace->left = cur->left;
           delete cur;
@@ -177,10 +178,7 @@ class BstMap : public Map<K, V> {
 
  public:
   BstMap() : root(NULL) {}
-  virtual ~BstMap() {
-    Node * current = root;
-    destroy(current);
-  }
+  virtual ~BstMap() { destroy(root); }
 };
 /*
     Node * cur = root;

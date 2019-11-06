@@ -15,6 +15,22 @@ void testit(void) {
   }
 
   bm1.printbst();
+
+  for (int j = 0; j < 10; j++) {
+    try {
+      std::cout << bm1.lookup(k[j]) << std::endl;
+    }
+    catch (std::invalid_argument & e) {
+      std::cout << e.what() << std::endl;
+    }
+  }
+  try {
+    std::cout << bm1.lookup(88) << std::endl;
+  }
+  catch (std::invalid_argument & e) {
+    std::cout << e.what() << std::endl;
+  }
+
   int v1[] = {33, 44, 12, 55, 55, 99, 99, 16, 77, 0, -1, -101, 100};
 
   for (int i = 0; i < 13; i++) {
@@ -140,6 +156,6 @@ void testit(void) {
 }
 
 int main(void) {
-  //testit();
+  testit();
   return EXIT_SUCCESS;
 }

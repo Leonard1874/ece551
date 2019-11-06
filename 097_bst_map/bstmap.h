@@ -184,9 +184,8 @@ class BstMap : public Map<K, V> {
  public:
   BstMap() : root(NULL) {}
   BstMap(const BstMap & rhs) : root(NULL) {
-    Node * rhscur = rhs.root;
-    if (rhscur != NULL) {
-      copy(rhscur);
+    if (rhs.root != NULL) {
+      copy(rhs.root);
     }
     else {
       root = NULL;
@@ -198,7 +197,8 @@ class BstMap : public Map<K, V> {
       BstMap<K, V> temp(rhs);
       destroy(root);
       root = NULL;
-      this->copy_e(temp.root);
+      copy_e(temp.root);
+      destroy(temp.root);
       //BstMap * t = &temp;
       //delete t;
       //std::cout << "!" << std::endl;

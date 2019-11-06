@@ -78,7 +78,7 @@ class BstMap : public Map<K, V> {
 
  private:
   void remove_helper(Node * R) {
-    if (R->left == NULL && R->right == NULL) {
+    if (R->left == NULL && R->right == NULL && R->parent != NULL) {
       if (R->parent->left == R) {
         R->parent->left = NULL;
         delete R;
@@ -91,7 +91,7 @@ class BstMap : public Map<K, V> {
       }
     }
     else {
-      if (R->left == NULL) {
+      if (R->left == NULL && R->right != NULL && R->parent != NULL) {
         if (R->parent->left == R) {
           R->parent->left = R->right;
           R->right->parent = R->parent;
@@ -105,7 +105,7 @@ class BstMap : public Map<K, V> {
           return;
         }
       }
-      if (R->right == NULL) {
+      else if (R->right == NULL && R->left != NULL && R->parent != NULL) {
         if (R->parent->left == R) {
           R->parent->left = R->left;
           R->left->parent = R->parent;
@@ -118,6 +118,9 @@ class BstMap : public Map<K, V> {
           delete R;
           return;
         }
+      }
+      else {
+        std::cerr << "cannpt handle!" << std::endl;
       }
     }
   }

@@ -82,11 +82,17 @@ class BstMap : public Map<K, V> {
     if (R->left == NULL && R->right == NULL && R->parent != NULL) {
       if (R->parent->left == R) {
         R->parent->left = NULL;
+        R->left = NULL;
+        R->right = NULL;
+        R->parent = NULL;
         delete R;
         return;
       }
       else {
         R->parent->right = NULL;
+        R->left = NULL;
+        R->right = NULL;
+        R->parent = NULL;
         delete R;
         return;
       }
@@ -96,12 +102,18 @@ class BstMap : public Map<K, V> {
         if (R->parent->left == R) {
           R->parent->left = R->right;
           R->right->parent = R->parent;
+          R->left = NULL;
+          R->right = NULL;
+          R->parent = NULL;
           delete R;
           return;
         }
         else {
           R->parent->right = R->right;
           R->right->parent = R->parent;
+          R->left = NULL;
+          R->right = NULL;
+          R->parent = NULL;
           delete R;
           return;
         }
@@ -110,12 +122,18 @@ class BstMap : public Map<K, V> {
         if (R->parent->left == R) {
           R->parent->left = R->left;
           R->left->parent = R->parent;
+          R->left = NULL;
+          R->right = NULL;
+          R->parent = NULL;
           delete R;
           return;
         }
         else {
           R->parent->right = R->left;
           R->left->parent = R->parent;
+          R->left = NULL;
+          R->right = NULL;
+          R->parent = NULL;
           delete R;
           return;
         }
@@ -154,7 +172,7 @@ class BstMap : public Map<K, V> {
     else {
       if (cur->left != NULL && cur->right != NULL) {
         Node * toRemove = cur;
-        toRemove = toRemove->left;
+        toRemove = cur->left;
         while (toRemove->right != NULL) {
           toRemove = toRemove->right;
         }
@@ -168,22 +186,27 @@ class BstMap : public Map<K, V> {
       }
       else {
         if (cur == root) {
-          if (cur->right == NULL && cur->left == NULL) {
-            delete cur;
+          if (root->right == NULL && root->left == NULL) {
+            delete root;
             root = NULL;
+            return;
           }
           else {
-            if (cur->right != NULL) {
-              cur = cur->right;
-              cur->parent = NULL;
-              delete root;
-              root = cur;
+            if (root->right != NULL) {
+              root = root->right;
+              root->parent = NULL;
+              cur->left = NULL;
+              cur->right = NULL;
+              delete cur;
+              return;
             }
             else {
-              cur = cur->left;
-              cur->parent = NULL;
-              delete root;
-              root = cur;
+              root = root->left;
+              root->parent = NULL;
+              cur->left = NULL;
+              cur->right = NULL;
+              delete cur;
+              return;
             }
           }
         }

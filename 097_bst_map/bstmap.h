@@ -12,9 +12,9 @@ class BstMap : public Map<K, V> {
     Node * right;
     K key;
     V value;
-    Node() : parent(NULL), left(NULL), right(NULL), key(NULL), value(NULL) {}
-    Node(const K & k, const V & v, Node * p) :
-        parent(p),
+    Node() : left(NULL), right(NULL), key(NULL), value(NULL) {}
+    Node(const K & k, const V & v) :
+        parent(NULL),
         left(NULL),
         right(NULL),
         key(k),
@@ -30,6 +30,7 @@ class BstMap : public Map<K, V> {
 
  public:
   friend void testit(void);
+
   virtual const V & lookup(const K & key) const throw(std::invalid_argument) {
     Node * cur = root;
     while (cur != NULL) {
@@ -51,7 +52,7 @@ class BstMap : public Map<K, V> {
  private:
   Node * add_helper(const K & key, const V & value, Node * cur, Node * parent) {
     if (cur == NULL) {
-      cur = new Node(key, value, parent);
+      cur = new Node(key, value, parent, NULL, NULL);
       return cur;
     }
     else {
@@ -83,45 +84,46 @@ class BstMap : public Map<K, V> {
         delete R;
         return;
       }
-      if (R->parent->right == R) {
+      else {
         R->parent->right = NULL;
         delete R;
         return;
       }
     }
-    if (R->left == NULL) {
-      if (R->parent->left == R) {
-        R->parent->left = R->right;
-        R->right->parent = R->parent;
-        delete R;
-        return;
+    else {
+      if (R->left == NULL) {
+        if (R->parent->left == R) {
+          R->parent->left = R->right;
+          R->right->parent = R->parent;
+          delete R;
+          return;
+        }
+        else {
+          R->parent->right = R->right;
+          R->right->parent = R->parent;
+          delete R;
+          return;
+        }
       }
-      if (R->parent->right == R) {
-        R->parent->right = R->right;
-        R->right->parent = R->parent;
-        delete R;
-        return;
-      }
-    }
-    if (R->right == NULL) {
-      if (R->parent->left == R) {
-        R->parent->left = R->left;
-        R->left->parent = R->parent;
-        delete R;
-        return;
-      }
-      if (R->parent->right == R) {
-        R->parent->right = R->left;
-        R->left->parent = R->parent;
-        delete R;
-        return;
+      if (R->right == NULL) {
+        if (R->parent->left == R) {
+          R->parent->left = R->left;
+          R->left->parent = R->parent;
+          delete R;
+          return;
+        }
+        else {
+          R->parent->right = R->left;
+          R->left->parent = R->parent;
+          delete R;
+          return;
+        }
       }
     }
   }
 
  public:
-  virtual void remove(const K & key) {
-    Node * cur = root;
+  Node * find(Node * cur, K key) {
     while (cur != NULL) {
       if (cur->key == key) {
         break;
@@ -135,6 +137,12 @@ class BstMap : public Map<K, V> {
         }
       }
     }
+    return cur;
+  }
+
+  virtual void remove(const K & key) {
+    Node * cur = root;
+    cur = find(root, key);
     if (cur == NULL) {
       std::cerr << "not such node" << std::endl;
       return;
@@ -152,6 +160,7 @@ class BstMap : public Map<K, V> {
         cur->value = toRemove->value;
         toRemove->key = tmp1;
         toRemove->value = tmp2;
+        assert(toRemove->left == NULL || toRemove->right == NULL);
         remove_helper(toRemove);
       }
       else {
@@ -214,3 +223,107 @@ class BstMap : public Map<K, V> {
     destroy(current);
   }
 };
+/*
+    Node * cur = root;
+    while (cur != NULL) {
+      if (cur->key == key) {
+        break;
+      }
+      else {
+        if (cur->key > key) {
+          cur = cur->left;
+        }
+        else {
+          cur = cur->right;
+        }
+      }
+    }
+    if (cur == NULL) {
+      std::cerr << "not such node" << std::endl;
+      return;
+    }
+    else {
+      if (cur->left != NULL && cur->right != NULL) {
+        Node * toRemove = cur;
+        toRemove = toRemove->left;
+        while (toRemove->right != NULL) {
+          toRemove = toRemove->right;
+        }
+        K tmp1 = cur->key;
+        V tmp2 = cur->value;
+        cur->key = toRemove->key;
+        cur->value = toRemove->value;
+        toRemove->key = tmp1;
+        toRemove->value = tmp2;
+        remove_helper(toRemove);
+      }
+      else {
+        if (cur == root) {
+          if (cur->right == NULL && cur->left == NULL) {
+            delete cur;
+            root = NULL;
+          }
+          else {
+            if (cur->right != NULL) {
+              cur = cur->right;
+              cur->parent = NULL;
+              delete root;
+              root = cur;
+            }
+            else {
+              cur = cur->left;
+              cur->parent = NULL;
+              delete root;
+              root = cur;
+            }
+          }
+        }
+        else {
+          Node * toRemove = cur;
+          remove_helper(toRemove);
+        }
+      }
+    }
+    */
+/*
+    if (R->left == NULL && R->right == NULL) {
+      if (R->parent->left == R) {
+        R->parent->left = NULL;
+        delete R;
+        return;
+      }
+      if (R->parent->right == R) {
+        R->parent->right = NULL;
+        delete R;
+        return;
+      }
+    }
+    if (R->left == NULL) {
+      if (R->parent->left == R) {
+        R->parent->left = R->right;
+        R->right->parent = R->parent;
+        delete R;
+        return;
+      }
+      if (R->parent->right == R) {
+        R->parent->right = R->right;
+        R->right->parent = R->parent;
+        delete R;
+        return;
+      }
+    }
+    if (R->right == NULL) {
+      if (R->parent->left == R) {
+        R->parent->left = R->left;
+        R->left->parent = R->parent;
+        delete R;
+        return;
+      }
+      if (R->parent->right == R) {
+        R->parent->right = R->left;
+        R->left->parent = R->parent;
+        delete R;
+        return;
+      }
+    }
+    */

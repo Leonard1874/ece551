@@ -3,45 +3,10 @@
 #include <cstdlib>
 #include <iostream>
 
-#include "bstmap.hpp"
+#include "bstmap.h"
 #include "map.h"
 
 void testit(void) {
-  BstMap<int, int> bm1;
-
-  int k[] = {33, 44, 12, 55, 99, 16, 77, 0, -1, 100};
-  for (int i = 0; i < 10; i++) {
-    bm1.add(k[i], i);
-  }
-
-  for (int j = 0; j < 10; j++) {
-    try {
-      std::cout << bm1.lookup(k[j]) << std::endl;
-    }
-    catch (std::invalid_argument & e) {
-      std::cout << e.what() << std::endl;
-    }
-  }
-  try {
-    std::cout << bm1.lookup(88) << std::endl;
-  }
-  catch (std::invalid_argument & e) {
-    std::cout << e.what() << std::endl;
-  }
-
-  int v[] = {1, 2, 3, 3, 4, 12};
-  for (int i = 0; i < 6; i++) {
-    //std::cout << i << ", " << v[i] << std::endl;
-    bm1.remove(v[i]);
-    bm1.printbst();
-  }
-
-  int v1[] = {33, 44, 12, 55, 99, 99, 16, 77, 0, -1, 100};
-  for (int i = 0; i < 11; i++) {
-    bm1.remove(v1[i]);
-  }
-  assert(bm1.root == NULL);
-  bm1.printbst();
   /*
   assert(bm1.root == NULL);
   bm1.printbst();
@@ -90,9 +55,50 @@ void testit(void) {
     bm1.remove(v[i]);
   }
   */
+  /*
+  for (int j = 0; j < 10; j++) {
+    try {
+      std::cout << bm1.lookup(k[j]) << std::endl;
+    }
+    catch (std::invalid_argument & e) {
+      std::cout << e.what() << std::endl;
+    }
+  }
+  try {
+    std::cout << bm1.lookup(88) << std::endl;
+  }
+  catch (std::invalid_argument & e) {
+    std::cout << e.what() << std::endl;
+  }
+  */
+  /*
+  int v[] = {1, 2, 3, 3, 4, 12};
+  for (int i = 0; i < 6; i++) {
+    std::cout << i << ", " << v[i] << std::endl;
+    bm1.remove(v[i]);
+    bm1.printbst();
+  }
+  */
+  //int v2[] = {33, 44, 12, 55, 99, 99, 16, 77, 0, -1, 100};
 }
 
 int main(void) {
-  testit();
+  //testit();
+  BstMap<int, int> bm1;
+
+  int k[] = {20, 2, 11, 12, 13, 14, 15};
+  for (int i = 0; i < 7; i++) {
+    bm1.add(k[i], i);
+  }
+
+  bm1.printbst();
+  int v1[] = {20, 2, 11, 12, 13, 14, 15};
+
+  for (int i = 0; i < 7; i++) {
+    std::cout << i << ", " << v1[i] << std::endl;
+    bm1.remove(v1[i]);
+  }
+  bm1.printbst();
+
   return EXIT_SUCCESS;
 }

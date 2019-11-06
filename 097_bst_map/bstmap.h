@@ -90,7 +90,8 @@ class BstMap : public Map<K, V> {
     return node;
   }
 
-  Node * remove_helper(Node * node) {
+  Node * remove_helper(const K & key, Node * node) {
+    /*
     if (node->left == NULL) {
       Node * temp = node->right;
       delete node;
@@ -110,9 +111,50 @@ class BstMap : public Map<K, V> {
       node = removeMin(node->right);
       return node;
     }
+    */
+
+    if (node == NULL)
+      return NULL;
+
+    if (node->key > key) {
+      node->left = remove_helper(key, node->left);
+      return node;
+    }
+    else if (node->key < key) {
+      node->right = remove_helper(key, node->right);
+      return node;
+    }
+    else {
+      if (node->left == NULL) {
+        Node * temp = node->right;
+        delete node;
+        return temp;
+      }
+
+      else if (node->right == NULL) {
+        Node * temp = node->left;
+        delete node;
+        return temp;
+      }
+      else {
+        Node * toRemove = getMin(node->right);
+        K tempk = toRemove->key;
+        V tempv = toRemove->value;
+
+        Node * replace = new Node(tempk, tempv);
+
+        replace->right = removeMin(node->right);
+        replace->left = node->left;
+
+        delete node;
+
+        return replace;
+      }
+    }
   }
 
  public:
+  /*
   Node ** find(K key) {
     Node ** cur = &root;
     while ((*cur) != NULL) {
@@ -130,16 +172,8 @@ class BstMap : public Map<K, V> {
     }
     return NULL;
   }
-
-  virtual void remove(const K & key) {
-    Node ** cur = find(key);
-    if (cur != NULL) {
-      *cur = remove_helper(*cur);
-    }
-    else {
-      return;
-    }
-  }
+  */
+  virtual void remove(const K & key) { root = remove_helper(key, root); }
 
  private:
   void printbst(Node * cur) {
@@ -198,7 +232,7 @@ class BstMap : public Map<K, V> {
       destroy(root);
       root = NULL;
       copy_e(temp.root);
-      destroy(temp.root);
+      //destroy(temp.root);
       //BstMap * t = &temp;
       //delete t;
       //std::cout << "!" << std::endl;

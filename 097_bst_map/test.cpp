@@ -24,10 +24,10 @@ void testit(void) {
   for (int i = 0; i < 10; i++) {
     bm3.add(k1[i], i);
   }
-  bm3.printbst();
+  //bm3.printbst();
   std::cout << "=" << std::endl;
   bm3 = bm1;
-  bm3.printbst();
+  //bm3.printbst();
   /*
   for (int j = 0; j < 10; j++) {
     try {

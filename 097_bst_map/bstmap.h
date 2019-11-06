@@ -173,6 +173,14 @@ class BstMap : public Map<K, V> {
     }
   }
 
+  void copy_e(Node * current) {
+    if (current != NULL) {
+      add(current->key, current->value);
+      copy_e(current->left);
+      copy_e(current->right);
+    }
+  }
+
  public:
   BstMap() : root(NULL) {}
   BstMap(const BstMap & rhs) : root(NULL) {
@@ -184,13 +192,17 @@ class BstMap : public Map<K, V> {
       root = NULL;
     }
   }
+
   BstMap & operator=(const BstMap & rhs) {
     if (this != &rhs) {
       BstMap<K, V> temp(rhs);
       destroy(root);
       root = NULL;
-      //assert(temp.root != NULL);
-      copy(temp.root);
+      this->copy_e(temp.root);
+      //BstMap * t = &temp;
+      //delete t;
+      //std::cout << "!" << std::endl;
+      //temp.printbst();
       //std::swap(temp, *this);
     }
     return *this;

@@ -183,106 +183,82 @@ class BstMap : public Map<K, V> {
   }
 };
 /*
-    Node * cur = root;
-    while (cur != NULL) {
-      if (cur->key == key) {
-        break;
+Node * getMin(Node * cur) {
+    if (cur->left == NULL)
+      return cur;
+
+    return getMin(cur->left);
+  }
+
+  Node * getMax(Node * cur) {
+    if (cur->right == NULL)
+      return cur;
+
+    return getMax(cur->right);
+  }
+
+  Node * removeMin(Node * cur) {
+    if (cur->left == NULL) {
+      Node * rightNode = cur->right;
+      delete cur;
+      return rightNode;
+    }
+
+    cur->left = removeMin(cur->left);
+    return cur;
+  }
+
+  Node * removeMax(Node * cur) {
+    if (cur->right == NULL) {
+      Node * leftNode = cur->left;
+      delete cur;
+      return leftNode;
+    }
+
+    cur->right = removeMax(cur->right);
+    return cur;
+  }
+
+if (cur == NULL) {
+      return cur;
+    }
+    if (cur->key == key) {
+      if (cur->left != NULL && cur->right != NULL) {
+        Node * toReplace = getMax(cur->left);
+        Node * Replace = new Node(toReplace->key, toReplace->value);
+        Replace->left = removeMax(Replace->left);
+        Replace->right = cur->right;
+        delete cur;
+        return Replace;
       }
       else {
-        if (cur->key > key) {
-          cur = cur->left;
+        if (cur->left == NULL && cur->right == NULL) {
+          delete cur;
+          return NULL;
         }
         else {
-          cur = cur->right;
-        }
-      }
-    }
-    if (cur == NULL) {
-      std::cerr << "not such node" << std::endl;
-      return;
-    }
-    else {
-      if (cur->left != NULL && cur->right != NULL) {
-        Node * toRemove = cur;
-        toRemove = toRemove->left;
-        while (toRemove->right != NULL) {
-          toRemove = toRemove->right;
-        }
-        K tmp1 = cur->key;
-        V tmp2 = cur->value;
-        cur->key = toRemove->key;
-        cur->value = toRemove->value;
-        toRemove->key = tmp1;
-        toRemove->value = tmp2;
-        remove_helper(toRemove);
-      }
-      else {
-        if (cur == root) {
-          if (cur->right == NULL && cur->left == NULL) {
+          if (cur->left == NULL && cur->right != NULL) {
+            Node * newhead = cur->right;
             delete cur;
-            root = NULL;
+            return newhead;
           }
           else {
-            if (cur->right != NULL) {
-              cur = cur->right;
-              cur->parent = NULL;
-              delete root;
-              root = cur;
-            }
-            else {
-              cur = cur->left;
-              cur->parent = NULL;
-              delete root;
-              root = cur;
-            }
+            Node * newhead = cur->left;
+            delete cur;
+            return newhead;
           }
         }
-        else {
-          Node * toRemove = cur;
-          remove_helper(toRemove);
-        }
       }
     }
-    */
-/*
-    if (R->left == NULL && R->right == NULL) {
-      if (R->parent->left == R) {
-        R->parent->left = NULL;
-        delete R;
-        return;
+    else {
+      if (cur->key > key) {
+        cur->left = remove_helper(key, cur->left);
+        return cur;
       }
-      if (R->parent->right == R) {
-        R->parent->right = NULL;
-        delete R;
-        return;
+      else {
+        cur->right = remove_helper(key, cur->right);
+        return cur;
       }
     }
-    if (R->left == NULL) {
-      if (R->parent->left == R) {
-        R->parent->left = R->right;
-        R->right->parent = R->parent;
-        delete R;
-        return;
-      }
-      if (R->parent->right == R) {
-        R->parent->right = R->right;
-        R->right->parent = R->parent;
-        delete R;
-        return;
-      }
-    }
-    if (R->right == NULL) {
-      if (R->parent->left == R) {
-        R->parent->left = R->left;
-        R->left->parent = R->parent;
-        delete R;
-        return;
-      }
-      if (R->parent->right == R) {
-        R->parent->right = R->left;
-        R->left->parent = R->parent;
-        delete R;
-        return;
-      }
-    }
-    */
+    root = remove_helper(key, root);
+ */

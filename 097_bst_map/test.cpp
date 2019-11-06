@@ -86,17 +86,18 @@ int main(void) {
   //testit();
   BstMap<int, int> bm1;
 
-  int k[] = {20, 2, 11, 12, 13, 14, 15};
-  for (int i = 0; i < 7; i++) {
+  int k[] = {33, 44, 12, 55, 99, 99, 16, 77, 0, -1, 100};
+  for (int i = 0; i < 11; i++) {
     bm1.add(k[i], i);
   }
 
   bm1.printbst();
-  int v1[] = {20, 2, 11, 12, 13, 14, 15};
+  int v1[] = {33, 44, 12, 55, 55, 99, 99, 16, 77, 0, -1, -101, 100};
 
-  for (int i = 0; i < 7; i++) {
+  for (int i = 0; i < 13; i++) {
     std::cout << i << ", " << v1[i] << std::endl;
     bm1.remove(v1[i]);
+    bm1.printbst();
   }
   bm1.printbst();
 

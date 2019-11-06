@@ -160,7 +160,7 @@ class BstMap : public Map<K, V> {
         cur->value = toRemove->value;
         toRemove->key = tmp1;
         toRemove->value = tmp2;
-        assert(toRemove->left == NULL || toRemove->right == NULL);
+        // assert(toRemove->left == NULL || toRemove->right == NULL);
         remove_helper(toRemove);
       }
       else {

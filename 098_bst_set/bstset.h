@@ -82,9 +82,9 @@ class BstSet : public Set<T> {
   }
 
   Node * remove_helper(const T & key, Node * node) {
-    if (node == NULL)
+    if (node == NULL) {
       return NULL;
-
+    }
     if (node->key > key) {
       node->left = remove_helper(key, node->left);
       return node;

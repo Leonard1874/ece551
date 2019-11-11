@@ -1,0 +1,26 @@
+Grading at 11/11/2019:18:07:28.547771
+For commit ID c5074c69d88abe70d93a6bae244313ca1fba3464
+Grading at Mon Nov 11 13:06:53 EST 2019
+compiling
+g++ -ggdb3 -Wall -Werror -pedantic -std=gnu++98 -o compress  bitstring.o  buildTree.o  compress.o  node.o  readFreq.o
+Make succeed, compress created
+Testcase 1
+-----------------------
+  - Valgrind was clean (no errors, no memory leaks)
+Decompressing, and comparing to original...:
+Your file matched the expected output
+Testcase passed 
+Testcase 2
+-----------------------
+  - Valgrind was clean (no errors, no memory leaks)
+Decompressing, and comparing to original...:
+Your file matched the expected output
+Testcase passed 
+Testcase 3
+-----------------------
+  - Valgrind was clean (no errors, no memory leaks)
+Decompressing, and comparing to original...:
+Your file matched the expected output
+Testcase passed 
+
+Overall Grade: A

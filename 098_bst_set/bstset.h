@@ -73,12 +73,14 @@ class BstSet : public Set<T> {
 
   Node * removeMin(Node * node) {
     if (node->left == NULL) {
-      Node * rightNode = node->right;
+      Node * temp = node->right;
       delete node;
-      return rightNode;
+      return temp;
     }
-    node->left = removeMin(node->left);
-    return node;
+    else {
+      node->left = removeMin(node->left);
+      return node;
+    }
   }
 
   Node * remove_helper(const T & key, Node * node) {

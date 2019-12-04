@@ -283,6 +283,6 @@ information will be printed into std::cerr.
      export var1
      env
      output: the shell will print a list of envirionment variables, with
-     	     'var1="666  777"9' in it
+     	     'var1=9"777  666"' in it
 
           

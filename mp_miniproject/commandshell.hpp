@@ -21,6 +21,14 @@ class command_shell {
   /* step 1 */
   int ffosh(void);  // top level function for the shell
 
+  void ffosh_execute(char * args[],
+                     size_t argc,
+                     char * command_line,
+                     char * envs[],
+                     std::vector<std::string> & envv,
+                     std::map<std::string, std::string> &
+                         vars);  // helper of ffosh, check commands and execute them
+
   void execute(size_t argc, char * args[], char * envs[]);  // fork, execve, waitpid
 
   /* step 2 */

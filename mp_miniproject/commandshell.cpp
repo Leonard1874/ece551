@@ -369,11 +369,55 @@ void command_shell::init_env(std::vector<std::string> & envv) {
 
 /*Top Level*/
 
+/*This function is a helper of ffosh, after ffosh checked that the command
+needs executing, this function will take the list of argumnets, the list of
+variables and command line itself, decide which command to run and execute it.*/
+void command_shell::ffosh_execute(char * args[],
+                                  size_t argc,
+                                  char * command_line,
+                                  char * envs[],
+                                  std::vector<std::string> & envv,
+                                  std::map<std::string, std::string> & vars) {
+  //build in command cd
+  if (!strcmp(args[0], "cd")) {
+    if (changedir(argc, args)) {
+      std::cerr << "change dir failed." << std::endl;
+    }
+  }
+  //build in command set
+  else if (!strcmp(args[0], "set")) {
+    if (setvar(command_line, argc, args, vars)) {
+      std::cerr << "set var failed" << std::endl;
+    }
+  }
+  //build in command export
+  else if (!strcmp(args[0], "export")) {
+    if (export_rev<true>(envv, vars, argc, args)) {
+      std::cerr << "exprot var failed" << std::endl;
+    }
+  }
+  //build in command rev
+  else if (!strcmp(args[0], "rev")) {
+    if (export_rev<false>(envv, vars, argc, args)) {
+      std::cerr << "rev var failed" << std::endl;
+    }
+  }
+  //other commands
+  else {
+    // if absolute path is provided, use the path directly
+    if (strchr(args[0], '/') == NULL) {
+      search_and_exe<true>(argc, args, vars["ECE551PATH"], envs);
+    }
+    // else, search ECE551PATH and then execute
+    else {
+      search_and_exe<false>(argc, args, vars["ECE551PATH"], envs);
+    }
+  }
+}
+
 /*Top level function of this shell. It would run the shell, print directories,
 read in command line, manage variables, arguments and call funcions.*/
 int command_shell::ffosh() {
-  /*initialize part*/
-
   //var map, used for stroring values of variables
   std::map<std::string, std::string> vars;
 
@@ -386,7 +430,7 @@ int command_shell::ffosh() {
   std::vector<std::string> envv;
   init_env(envv);
 
-  /*run the shell in loop, until meet 'exit' or 'EOF'*/
+  //run the shell in loop, until meet 'exit' or 'EOF'*
   while (true) {
     //read in current directory and print
     char * cur_dir = get_current_dir_name();
@@ -431,42 +475,7 @@ int command_shell::ffosh() {
 
         //parse the command line for variables, if any, replace the variable with value
         parsevar(argc, args, vars, envm);
-
-        //build in command cd
-        if (!strcmp(args[0], "cd")) {
-          if (changedir(argc, args)) {
-            std::cerr << "change dir failed." << std::endl;
-          }
-        }
-        //build in command set
-        else if (!strcmp(args[0], "set")) {
-          if (setvar(command_line, argc, args, vars)) {
-            std::cerr << "set var failed" << std::endl;
-          }
-        }
-        //build in command export
-        else if (!strcmp(args[0], "export")) {
-          if (export_rev<true>(envv, vars, argc, args)) {
-            std::cerr << "exprot var failed" << std::endl;
-          }
-        }
-        //build in command rev
-        else if (!strcmp(args[0], "rev")) {
-          if (export_rev<false>(envv, vars, argc, args)) {
-            std::cerr << "rev var failed" << std::endl;
-          }
-        }
-        //other commands
-        else {
-          // if absolute path is provided, use the path directly
-          if (strchr(args[0], '/') == NULL) {
-            search_and_exe<true>(argc, args, vars["ECE551PATH"], envs);
-          }
-          // else, search ECE551PATH and then execute
-          else {
-            search_and_exe<false>(argc, args, vars["ECE551PATH"], envs);
-          }
-        }
+        ffosh_execute(args, argc, command_line, envs, envv, vars);
         freecmd(argc, args);
         freecmd(envc, envs);
       }
